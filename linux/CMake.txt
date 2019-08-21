@@ -1,0 +1,81 @@
+
+1 介绍
+	项目构建工具，正常自己写makefile太复杂，使用cmake可以自动编译程序，自动生成makefile文件。
+	属于make上层的一种构建工具。
+	可以跨平台
+2 linux下的安装
+	命令安装：sudo  apt install cmake（cmake会默认安装在/usr/local/bin 下面）
+	源码安装
+		下载地址：http://www.cmake.org/cmake/resources/software.html
+		解压
+		依次执行
+			 cd cmake-2.6.4 
+			 ./bootstrap
+			 make
+			make install
+3 cmake使用
+	1) 创建项目 hello
+	2) 在项目hello中创建文件CMakeLists.txt，该文件放在程序的根目录下
+		1 PROJECT(hello)#该命令表示项目的名称是 main 
+		2 CMAKE_MINIMUM_REQUIRED(VERSION 2.6) #命令限定了 CMake 的版本
+		3 AUX_SOURCE_DIRECTORY(. DIR_SRCS) #将当前目录中的源文件名称赋值给变量 DIR_SRCS
+		4 ADD_EXECUTABLE(hello ${DIR_SRCS})# 指示变量 DIR_SRCS 中的源文件需要编译 成一个名称为 main 的可执行文件
+	  语法比较简单,由命令、注释和空格组成,其中命令是不区分大小写的,符号"#"后面的内容被认为是注释。
+	  命令由命令名称、小括号和参数组成,参数之间使用空格进行间隔
+	3) 编译项目
+		创建目录build
+		cd build
+		执行命令“cmake PATH”( PATH 是 CMakeLists.txt 所在的目录 )
+		执行make指令
+	
+	
+4 多源文件目录的处理
+	test
+		main.cpp
+		src
+			hello.h
+			hello.cpp
+	其中src目录下的文件要编译成一个链接库。
+	步骤：
+		在test项目下创建文件CMakeLists.txt
+
+			1 PROJECT(main)
+			2 CMAKE_MINIMUM_REQUIRED(VERSION 2.6) 
+			3 ADD_SUBDIRECTORY( src )#使用命令 ADD_SUBDIRECTORY 指明本项目包含一个子目录 src 
+			4 AUX_SOURCE_DIRECTORY(. DIR_SRCS)
+			5 ADD_EXECUTABLE(main ${DIR_SRCS}  )
+			6 TARGET_LINK_LIBRARIES( main Test )#使用命令 TARGET_LINK_LIBRARIES 指明可执行文件 main 需要连接一个名为Test的链接库 
+				
+		在子目录中创建CMakeLists.txt文件		
+			1 AUX_SOURCE_DIRECTORY(. DIR_TEST1_SRCS)
+			2 ADD_LIBRARY ( Test ${DIR_TEST1_SRCS})#使用命令 ADD_LIBRARY 将 src 目录中的源文件编译为共享库。
+		在根目录中创建build文件夹
+		cd build
+		cmake ..
+			首先解析目录 step2 中的 CMakeLists.txt ,当程序执行命令 ADD_SUBDIRECTORY( src ) 时进入目录 src 对其中的 CMakeLists.txt 进行解析
+		make
+		
+		
+5 使用cmake对含有第三方函数库的项目进行编译
+
+
+6 使用 cmake 生成 debug 版和 release 版的程序	
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

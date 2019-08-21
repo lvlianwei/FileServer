@@ -1,0 +1,3 @@
+  
+  
+  2、git reset和git checkout的区别？
