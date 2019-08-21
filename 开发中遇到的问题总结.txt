@@ -1,4 +1,6 @@
-
+================================================================
+c++
+===============================================================
 1 多个文件时，要将多个文件一起编译才可使用，不然会出现 undefined reference to error得错误。
 	多文件编译方案：	
 		a 使用g++ 几个文件一起编译    g++ a.cpp b.cpp -o ab
@@ -31,3 +33,28 @@
 	
 	A a()；在栈上分配内存，系统自动回收，但是不能用来实例化无参构造的类
 	A *a =new A；在堆上分配内存，手动回收内存delete，可以实例化有参无参类。。
+	
+
+
+
+
+
+================================================================
+git
+===============================================================	
+1 在使用指令git push -u origin master 往远程服务器上上传文件时报错
+		To git@github.com:lvlianwei/FileServer.git
+		 ! [rejected]        master -> master (fetch first)
+		error: failed to push some refs to 'git@github.com:lvlianwei/FileServer.git'
+		hint: Updates were rejected because the remote contains work that you do
+		hint: not have locally. This is usually caused by another repository pushing
+		hint: to the same ref. You may want to first integrate the remote changes
+		hint: (e.g., 'git pull ...') before pushing again.
+		hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+	原因是本地的仓库中没有README.MD文件
+	解决：
+		$ git pull --rebase origin master
+		$ git push -u origin master
+
+
+	
