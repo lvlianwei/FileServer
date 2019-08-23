@@ -6,3 +6,15 @@
 	
 如何为开发项目编写规范的README文件（windows）
 	https://www.cnblogs.com/wj-1314/p/8547763.html
+
+ServiceManager
+	https://www.jianshu.com/p/ef6359f63305（简书-ServiceManager注册过程）
+	https://www.jianshu.com/p/601a2e9721dd（Android-ServiceManager）
+	https://blog.csdn.net/u011897062/article/details/83989236（ServiceManager简单分析）
+	https://blog.csdn.net/u011118524/article/details/93738735（系统服务管理者：ServiceManager进程）
+	https://www.cnblogs.com/deman/p/4775921.html（android 进程间通信---Service Manager（1））
+	https://blog.csdn.net/weixin_43836778/article/details/91882010	(Android系统 之 ServiceManager 注册服务)
+	
+Binder
+    https://blog.csdn.net/augfun/article/details/82343249（简单理解Binder机制的原理）
+		
