@@ -1,0 +1,408 @@
+个人理解；
+	gmock :一般进行打桩
+	gtest：测试框架，与gmock结合
+
+1 白盒测试
+	白盒测试，透明、结构测试，考虑测试用例对程序内部的覆盖率。
+	与之对应的是黑盒测试
+2 测试--打桩和驱动的概念
+	在进行单元测试时，单独的某个模块因为对于其他某些模块有依赖，即调用了别的模块中方法或者自身
+	模块中的方法被上层模块调用。
+	其中，测试的模块调用其他模块的中的方法，称其他模块为桩模块
+	调用该模块的称为驱动模块
+	
+3 gmock介绍
+	Google公司推出的白盒测试工具。
+	通过对其他接口进行类似打桩。
+	Gmock一般和gtest结合使用，gmock对待测文件就行打桩
+	gtest进行测试
+		举例：
+			1、比如银行业务，需要测试业务模块。此时，不可能去操作真实的数据库，并且搭建新的数据库可能比较复杂或者耗时。
+			那么就可以用gmock将数据库接口地方打桩，来模拟数据库操作。
+			2、比如要测试A模块，必过A模块需要调用B模块的函数。如果B模块还没有实现，此时，就可以用gmock将B模块的某些接口打桩。
+			这样就可以让A模块的测试继续进行下去。
+	
+4 gmock安装
+	在github上下载gmock的安装包
+		https://github.com/google/googlemock
+	将下好的安装包上传到linux下。
+	在linux下解压
+		unzip google-master.zip
+	改名
+		mv google-master.zip  gmock
+	cd gmock
+	mkdir build
+	cd build 
+	cmake ..
+	将编译后的lib下的.a文件拷贝到/usr/local/lib下
+	
+
+5 gmock使用
+
+	典型的流程
+		引入你要用到的Google Mock名称.（一般：::testing::InitGoogleMock(&argc, argv)----初始化gooleMock） 除宏或其它特别提到的之外所有Google Mock名称都位于*testing*命名空间之下.
+		建立模拟对象(Mock Objects).(一般在写一个类，继承被模拟的类。然后在主类中声明这个类。。在这个类中要引用gmock/gmock.h ==> #include <gmock/gmock.h>)
+		可选的,设置模拟对象的默认动作.
+		在模拟对象上设置你的预期(它们怎样被调用,应该怎样回应?).
+	
+	自定义方法/成员函数的期望行为
+		在根据接口定义好了mock类后，在单元测试/主程序中使用这个Mock类中的方法时最关键的就是对期望行为的定义。
+		  EXPECT_CALL(mock_object, Method(argument-matchers))
+		   .With(multi-argument-matchers)
+		   .Times(cardinality)
+		   .InSequence(sequences)
+		   .After(expectations)
+		   .WillOnce(action)
+		   .WillRepeatedly(action)
+		   .RetiresOnSaturation();
+
+		解释：
+		EXPECT_CALL声明一个调用期待，就是我们期待这个对象的这个方法按什么样的逻辑去执行。
+		mock_object是我们mock的对象，上例中就是TestUser的一个对象。
+		Method是mock对象中的mock方法，它的参数可以通过argument-matchers规则去匹配。
+		With是多个参数的匹配方式指定。
+		Times表示这个方法可以被执行多少次。如果超过这个次数，则按默认值返回了。
+		InSequence用于指定函数执行的顺序。它是通过同一序列中声明期待的顺序确定的。
+		After方法用于指定某个方法只能在另一个方法之后执行。
+		WillOnce表示执行一次方法时，将执行其参数action的方法。一般我们使用Return方法，用于指定一次调用的输出。
+		WillRepeatedly表示一直调用一个方法时，将执行其参数action的方法。需要注意下它和WillOnce的区别，WillOnce是一次，WillRepeatedly是一直。
+		RetiresOnSaturation用于保证期待调用不会被相同的函数的期待所覆盖。
+	
+		
+	Matcher（匹配器）
+		用于定义Mock类中的方法的形参的值
+		方法不需要形参时，可以保持match为空
+		常见类型：
+			通配符：
+				_ 可以代表任意类型
+				A() or An()	可以是type类型的任意值
+			一般比较
+				Eq(value) 或者 value	argument == value，method中的形参必须是value
+				Ge(value)	argument >= value，method中的形参必须大于等于value
+				Gt(value)	argument > value
+				Le(value)	argument <= value
+				Lt(value)	argument < value
+				Ne(value)	argument != value
+				IsNull()	method的形参必须是NULL指针
+				NotNull()	argument is a non-null pointer
+				Ref(variable)	形参是variable的引用
+				TypedEq(value)	形参的类型必须是type类型，而且值必须是value
+				
+			浮点数的比较
+				DoubleEq(a_double)	形参是一个double类型，比如值近似于a_double，两个NaN是不相等的
+				FloatEq(a_float)	同上，只不过类型是float
+				NanSensitiveDoubleEq(a_double)	形参是一个double类型，比如值近似于a_double，两个NaN是相等的，这个是用户所希望的方式
+				NanSensitiveFloatEq(a_float)	同上，只不过形参是float
+			
+			字符串匹配
+				字符串即可以是C风格的字符串，也可以是C++风格的
+				ContainsRegex(string)	形参匹配给定的正则表达式
+				EndsWith(suffix)	形参以suffix截尾
+				HasSubstr(string)	形参有string这个子串
+				MatchesRegex(string)	从第一个字符到最后一个字符都完全匹配给定的正则表达式.
+				StartsWith(prefix)	形参以prefix开始
+				StrCaseEq(string)	参数等于string，并且忽略大小写
+				StrCaseNe(string)	参数不是string，并且忽略大小写
+				StrEq(string)	参数等于string
+				StrNe(string)	参数不等于string
+			
+			容器的匹配
+				Contains(e)	在method的形参中，只要有其中一个元素等于e
+				Each(e)	参数各个元素都等于e
+				ElementsAre(e0, e1, …, en)	形参有n+1的元素，并且挨个匹配
+				ElementsAreArray(array) 或者ElementsAreArray(array, count)	和ElementsAre()类似，除了预期值/匹配器来源于一个C风格数组
+				ContainerEq(container)	类型Eq(container)，就是输出结果有点不一样，这里输出结果会带上哪些个元素不被包含在另一个容器中
+				Pointwise(m, container)
+		
+		复杂类型的匹配器
+			在这里不进行列举，想了解请：：https://www.cnblogs.com/welkinwalker/archive/2011/11/29/2267225.html
+		
+	基数
+		基数用于Times()中来指定模拟函数将被调用多少次|	
+		AnyNumber()	函数可以被调用任意次.
+		AtLeast(n)	预计至少调用n次.
+		AtMost(n)	预计至多调用n次.
+		Between(m, n)	预计调用次数在m和n(包括n)之间.
+		Exactly(n) 或 n	预计精确调用n次. 特别是, 当n为0时,函数应该永远不被调用.
+	
+	行为
+		 值的返回
+		 用于指定Mock类的方法所期望模拟的行为
+		 Return()	让Mock方法返回一个void结果
+		Return(value)	返回值value
+		ReturnNull()	返回一个NULL指针
+		ReturnRef(variable)	返回variable的引用.
+		ReturnPointee(ptr)	返回一个指向ptr的指针
+		
+	序列（Sequences）
+		对于无序的期望行为，对于调用的方法没有顺序
+		序列 (Sequences) 指定预期的顺序. 在同一序列里的所有预期调用必须按它们指定的顺序发生
+		技巧：
+			偷懒的方法，就是不要这定义Sequence s1, s2的序列，而根据我定义期望行为（EXPECT_CALL）的顺序而自动地识别调用顺序，这种方式可能更为地通用。
+		
+		================================================================================================================================================================
+		
+6 gtest介绍
+	跨平台
+	c++测试框架
+	
+7 gtest的几个概念
+	TEST宏
+		TEST(test_case_name, test_name)
+		TEST_F(test_fixture,test_name)  //多个测试场景需要相同数据配置的情况，用TEST_F。
+										//TEST_F  test fixture，测试夹具，测试套，承担了一个注册的功能。
+										//test_name 被测试方法
+		TEST_P	
+	断言
+		断言的宏分为两类:ASSERT宏，EXPECT宏
+			ASSERT_系列：如果当前点检测失败则退出当前函数 
+			EXPECT_系列：如果当前点检测失败则继续往下执行 
+			
+		ASSERT_系列
+			bool值检查
+				ASSERT_TRUE(参数)，期待结果是true
+				ASSERT_FALSE(参数)，期待结果是false
+			数值型数据检查
+				ASSERT_EQ(参数1，参数2)，传入的是需要比较的两个数  equal
+				ASSERT_NE(参数1，参数2)，not equal，不等于才返回true
+				ASSERT_LT(参数1，参数2)，less than，小于才返回true
+				ASSERT_GT(参数1，参数2)，greater than，大于才返回true
+				ASSERT_LE(参数1，参数2)，less equal，小于等于才返回true
+				ASSERT_GE(参数1，参数2)，greater equal，大于等于才返回true
+			字符串检查
+				ASSERT_STREQ(expected_str, actual_str)，两个C风格的字符串相等才正确返回
+				ASSERT_STRNE(str1, str2)，两个C风格的字符串不相等时才正确返回
+				ASSERT_STRCASEEQ(expected_str, actual_str)
+				ASSERT_STRCASENE(str1, str2)
+			在每个断言后可通过<< “str” 来实现在当前点出错时，自定义的错误输出
+				eg:ASSERT_EQ(1=1)<<"1==1"
+			
+		
+		事件机制
+			主要三种：
+				TestSuite事件 
+					写一个类，继承testing :: Test
+					实现两个静态方法
+						SetUpTestCase 在第一个testCase执行之前执行
+						TearDownTestCase 在每一个testCase执行后执行
+				TestCase事件
+					挂在每个testcase执行前后执行
+					需要实现SetUp方法和TearDown方法
+					SetUp在每个case执行前执行
+					TearDown在每个case执行后执行
+				全局事件 
+					写一个类，继承testing::Environment ，
+					实现SetUp方法和TearDown方法
+					setUp在所有case执行前执行
+					TearDown在所有case执行后执行
+					
+					
+		死亡测试
+			ASSERT_DEATH(参数1，参数2)，程序挂了并且错误信息和参数2匹配，此时认为测试通过。如果参数2为空字符串，则只需要看程序挂没挂即可。
+			ASSERT_EXIT(参数1，参数2，参数3)，语句停止并且错误信息和被提前给的信息匹配。
+					
+		
+		
+					
+					
+8 gtest环境搭建
+	同gmock
+
+9 编译程序
+	g++ add.cc testAdd.cc -lgtest -lpthread
+	
+	
+额外补充：	
+	cmake
+	
+	宏  #define
+		不带参数的宏定义	
+			#define 标识符 字符串   //标识符会被字符串所替代
+			在预编译时，会将所有标识符换成对应的字符串。方便修改
+			在预编译阶段，只是替换，不作正确性判断
+			宏定义不是c语句，不加;
+			
+			作用域
+				#define出现在函数外，从该行起，到文件尾起作用。一般写在文件开头
+				
+				可以使用#undef终止宏作用域
+				
+				程序中用引号引起的内容，与宏定义一致也不替换
+				
+			宏定义不分配空间，只是字符替换
+			
+		带参数的宏定义
+			#define   宏名(参数表)   字符串   //以空格区别宏名和字符串，字符串中包含在括号中所指定的参数。
+			展开时，将宏名后的实参替换为#define中的形参
+			在带参宏中，宏名和（参数表）之间不可以有空格，否则，将空格后的一串当作不带参的宏定义处理
+		
+		带参数的宏和函数的区别
+			函数在用时，先求出实参表达式的值，再带入形参。宏只是单纯的替换，不会在实参处运算
+			函数在程序运行时处理，会为形参分配临时内存。宏实在预编译时处理，不分配内存，没有值传递，没有返回值的概念
+			函数的实参、形参都要有数据类型的定义。宏没有数据类型的概念，只是单纯的做字符的替换。不关心类型
+	
+	条件编译
+	    #define DEBUG
+		....
+		ifdef DEBUG
+			cerr<<"ksdfjdjfdfk"<<endl;
+		#endif
+		如果在上面定义了#define DEBUG，则该语句在编译时执行。
+		
+		#if 0
+			cout <<"不进行编译的代码"<<endl;
+		#endif
+		使用#if 0来注释掉代码
+		
+	#ifndef   #endif
+		在多个头文件中如果都包含了同一个文件，则在几个文件整合编译时，会出现大量声明冲突问题。
+		这时，使用#ifdef  #endif来解决
+		格式：
+			#ifndef <标识> ---假如没有定义
+			#define <标识> 
+			.
+			.
+			.
+
+			#endif 
+			其中标识命名规则，原则上自由，一般为_文件名大写_格式。。含有.的用_替换
+			如：stdio.h 
+			#ifndef _STDIO_H
+			#define _STDIO_H
+			
+			
+	
+	
+			
+	宏开关
+		#include <iostream>
+		using namespace std;
+		//定义一个宏开关
+		#define __SWITCH__     
+		int main()
+		{
+		#ifdef __SWITCH__  //如果定义了__SWITCH__开则执行下列代码段
+			cout << "SWITCH开关已打开" << endl;
+			cout << "....." << endl;
+		#else         //如果未定义__SWITCH__开则执行下列代码段     
+			cout << "SWITCH开关未打开" << endl;
+			cout << "....." << endl;
+		#endif
+			system("pause");
+			return 0;
+		}
+
+		
+	.mk文件
+		是 makefile 文件，makefile定义了一系列的规则来指定，在mk文件中，可以修改make时的一些参数。
+		
+	
+	#和##运算符
+		#运算符用来将内容转换为用引号引起来的字符串
+			#define MKSTR( x ) #x
+			 cout << MKSTR(HELLO C++) << endl;
+				
+			输入：HELLOC++
+		##是用来连接两个指令。
+			#define concat(a, b) a ## b
+			 int xy = 100;
+			 cout << concat(x, y);
+			 输出 ：100
+	===============================================================================================
+	
+商泰单体测试PPT笔记
+	1 Gmock在商泰开发中的使用
+		代码结构
+			src----存放待测原文件
+			Test---存放测试中用到的打桩文件
+			gtest---测试文件
+		步骤：
+			1 修改makefile文件
+				定义宏开关，让测试编译和正式编译时使用不同的文件
+			2 修改待测原文件
+				在原文件中加入宏开关的定义
+			3 分析待测文件，确定待测方法和需要的桩文件
+			
+			4编写桩文件
+				桩文件中需要包含 #include<gmock/gmock.h>
+								#include<gtest/gtest.h>
+				如果桩文件中的类存在继承关系，父类也需要打桩
+				。。。。。。具体细节在后面说明
+			
+			5编写测试文件
+				测试文件中要包含头文件gmock/gmock.h   gtest/gtest.h
+				包含桩文件
+				包含待测文件
+				定义测试类
+				写测试实例
+				
+			6 编译程序
+
+				
+			7生成覆盖率
+		
+	2 MOCK_METHOD和ON_CALL、EXPECT_CALL的使用
+		MOCK_METHOD#
+			MOCK_METHOD#1(#2, #3(#4) )
+			#1表示你要mock的方法共有几个参数
+			#2是你要mock的方法名称！
+			#3表示这个方法的返回值类型。
+			#4是这个方法具体的参数，
+
+		ON_CALL和EXPECT_CALL			
+			EXPECT_CALL(#1,#2(#3)).WillOnce(Return(false)).WillRepeadedly(Return(true));
+			#1表示mock对象， #2表示想定义的那个方法名称， #3表示readBuf方法的参数， WillOnce表示第一次期待的动作, WillRepeadedly表示后几次期待动作均一致
+			
+			ON_CALL：只对返回值设定，但是必须得有EXPECT_CALL配合（否则会有警告） （现在ON_CALL不常用，一般都是使用EXPECT_CALL来做返回值限定）
+			想对mock对象设置其他值，必须使用EXPCET_CALL
+				EXPECT_CALL(mock,get());//默认Times为1---使用
+				ON_CALL(mock,get()).WillByDefault(Return(false));
+	Gmock的各种类型说明
+		1 在待测函数中，调用了自己类中的其他函数
+			------mock待测类本身类的接口
+			class A{
+				int  A::func_A(){
+					return A::getNum();
+				}
+				
+				virtual int A::getNum(){
+					return 2;
+				}
+			}
+			
+			如上所示，func_A函数中调用了自己的类中的接口getNum，我们需要重新构造A::getNum()接口
+			在桩文件中，以A为父类，创建一个新的mock类，类中对getNum函数进行模拟
+				int getNum(){
+					MOCK_METHOD#x(getNum,int());
+			}
+			
+			在待测函数中，需要mock本类中的函数，则该函数必须改为virturl。
+				因为mock是基于多态的原理，必须保证mock的函数在头文字中定义为virtual类型
+				如上例所示，getNum()方法在mock时必须改为viturl类型
+			
+	
+		2 需要打桩的类作为方法的参数或者局部变量
+		
+			如果在测试中，在被测函数中传入了一个其他的类作为参数或者其他类作为该函数的局部变量，那么就需要这个类被打桩
+			一般根据参数类中在该函数中使用的方法，在桩类中进行打桩操作。
+			
+			
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

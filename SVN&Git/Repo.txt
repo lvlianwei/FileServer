@@ -1,0 +1,54 @@
+ 
+ 1 rep与git的关系
+	rep是对git的进一步封装,简化git，不是取代
+	大型项目，有多个仓库，rep维护着这些git库的信息，rep是通过一个名为manifests的git库来维护这些库之间的关系
+	rep是可执行的python脚本，脚本也是通过git库来维护的，这个git库名字叫repo
+ 
+ 2 在客户端通过rep初始化一个项目时，就会从远程把manifests和rep两个库拷贝到本地。在本地生成.rep目录
+	在.rep的目录下，有manifests、repo、project三个主要的目录
+		manifests： 项目清单库。仓库目录有两份拷贝，一份位于工作目录(.repo/manifests)的.git目录下，另一份独立存放于.repo/manifests.git
+		repo：脚本库。存放封装的git命令
+		project：所有被管理git库的仓库目录都是分开存放的，位于.repo/projects目录下。同时，也会保留工作目录的.git，但里面所有的文件都是到.repo的链接。这样，即做到了分开存放，
+		也兼容了在工作目录下的所有git命令。
+	
+  3 使用
+		init 
+			repo init -u ssh://192.168.8.74:29418/Src/Goni/platform/manifest -m iTron.xml
+			-u：指定manifests这个远程git库的URL，manifests库是整个项目的清单。默认情况，这个git库只包含了default.xml一个文件
+			-m， –manifest-name：指定所需要的manifests库中的清单文件。默认情况下，会使用maniftests/default.xml
+			-b， –manifest-branch：指定manifest.xml文件中的一个版本，也就是俗称的“分支”
+			运行后在当前目录下生成.repo目录，目录结构如下：
+			.repo
+				├── manifests       # 一个git库，包含default.xml文件，用于描述repo所管理的git库的信息
+				├── manifests.git   # manifest这个git库的实体，manifest/.git目录下的所有文件都会链接到该目录
+				├── manifest.xml    # manifests/default.xml的一个软链接
+				└── repo            # 一个git库，包含repo运行的所有脚本
+				
+		sync
+			repo sync 将远程仓库的代码同步到本地
+				当本地的git库是第一次触发同步操作时，那么，该命令等价于git clone，会将远程git库直接拷贝到本地
+
+		forall  
+			 repo forall a b -c "git status"对git库a,b执行-c参数制定的命令序列（git status）
+			 
+		start
+			repo start dragon_master --all
+				当第一次sync完代码后，可以通过start命令将git库切换到开发分支，避免在匿名分支上工作导致丢失改动内容的情况。
+
+
+	4 在商泰开发中repo使用实例
+		Git使用实例：
+		■切替到demo_harvey_wirelessCarplay分支
+			repo init -u ssh://192.168.8.74:29418/Src/Goni/platform/manifest -m iTron.xml
+			cd .repo/manifests/
+			git checkout Goni/Demo/Harvey
+			repo sync
+			repo forall -c "git checkout remotes/Goni/Goni/Demo/harvey -b wirelessCarplay“
+
+		■新工程创建
+			repo init -u ssh://gaolei@192.168.8.74:29418/Src/Goni/platform/manifest -b dragon/master -m iTron.xml
+			repo sync
+			repo start dragon_master --all
+
+		■遇到分支无法更新问题时：
+			repo forall -c "git gc --prune=now"

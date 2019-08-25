@@ -1,0 +1,39 @@
+vim插件安装
+
+1 Vundle
+	插件管理工具
+	安装 
+		git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	在.vimr文件中添加配置
+		
+		set rtp+=~/.vim/bundle/Vundle.vim
+		call vundle#begin()
+		Plugin 'gmarik/Vundle.vim'
+		
+		call vundle#end()
+	在vim中执行
+	·:PluginInstall
+	
+2 NerDTree
+	目录树插件
+	纳入到Vundle得管理
+	    Plugin 'scrooloose/nerdtree'
+	在vim 中执行命令
+		：PluginInstall
+	在.vimrc中配置NerdTree
+	
+		" NerdTree才插件的配置信息
+		""将F2设置为开关NERDTree的快捷键
+		map <f2> :NERDTreeToggle<cr>
+		""修改树的显示图标
+		let g:NERDTreeDirArrowExpandable = '+'
+		let g:NERDTreeDirArrowCollapsible = '-'
+		""窗口位置
+		let g:NERDTreeWinPos='left'
+		""窗口尺寸
+		let g:NERDTreeSize=30
+		""窗口是否显示行号
+		let g:NERDTreeShowLineNumbers=1
+		""不显示隐藏文件
+		let g:NERDTreeHidden=0
+

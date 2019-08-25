@@ -1,0 +1,116 @@
+ 
+ 1 svn 介绍
+	版本控制系统
+	集中式（Git分布式）
+	多人共享同一资源
+	可改动，可回退到任何版本
+	
+ 2 使用
+	项目检出（checkout）
+		在checkout窗体中，输入远程的ip地址、本地地址
+		选择检出方式：	
+			Fully recursive 递归检出所有的文件
+			immediate children，include folders  检出子目录，包括文件夹
+			only file children  只检子文件
+			only this item 只检出目录（推荐/）
+		输入账号密码（可保存）
+	
+	提交修改
+		文件或者文件夹为有绿色标识----未修改状态
+		文件或者文件夹为有红色标识----文件为已修改状态
+		对于新增的文件------不属于版本库管理，不可提交
+			选中文件--》右击---》add---文件有蓝色标识---》commit-->将新增的文件添加到版本库中	
+		提交：	
+			在需要提交的目录下，右击--》SVN Commit---》输入log信息--》确定----》该目录变为绿色
+			在删除文件时，也要右击提交
+			在提交时，如果遇到冲突问题，update下，再commit
+			
+	查看日志
+		右键--》TortoiseSVN-->show log
+		
+	
+	版本回滚
+		修改文件但未提交
+			选中文件--》右击--》Revert   -----即可将该文件恢复到与版本库中一致的状态
+		
+		
+		修改文件并已经提交
+			选中文件--》右击--》Update to revision--》输入在show log中的想要恢复到的版本的版本号---》点击ok 
+			右击SVNupdate下即可
+			
+	查看每次提交的更改
+		查看日志---》左键双击修改过的文件
+		
+ 3 trunk、branches、tags
+	trunk 
+		主干,开发主线
+	branches 
+		分支，一个主干可以有多个分支
+		从主干的备份开始。
+		在分支上开发，不影响turnk 
+		添加了新的功能测试合格后，可以merge到主干上
+	tags
+		标记
+		里程碑
+		往往代表一个完整的版本
+
+
+
+====================================================================================================================
+
+ 在linux下搭建subversion服务器并配置
+	学习网址：https://www.cnblogs.com/liuxianan/p/linux_install_svn_server.html
+		
+	1 下载subversion
+		sudo apt install subversion 
+		
+	2 在/home下创建svn仓库
+		svnadmin create /home/svn
+		
+	3 近入到conf文件夹中
+		修改 passwd文件  在user下添加用户和密码
+		修改 authz文件 在该文件下，为用户或着组设置权限
+		修改 svnserve.conf文件  
+			打开下面的5个注释
+			anon-access = read #匿名用户可读（也可设置为none）
+			auth-access = write #授权用户可写
+			password-db = passwd #使用哪个文件作为账号文件
+			authz-db = authz #使用哪个文件作为权限文件
+			realm = /home/svn # 认证空间名，版本库所在目录
+					注意：打开注释时切记前面不要留有空格
+							ealm记得改成你的svn目录
+
+	4 启动和停止
+		启动：	
+			svnserve  -d -f /home/svn(svn仓库目录)
+		查看启动进程：
+			 ps -ef |grep svnserve
+		
+		停止：
+			kill -9 进程号
+	
+	5 客户端连接
+		在客户端中，直接输入svn://ip
+			输入账号密码即可连接
+
+	6 查看svn版本
+		svn --version
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
