@@ -1,3 +1,8 @@
   
   
-  2、git reset和git checkout的区别？
+1  使用git pull origin master上拉取github远程git库时，遇到fatal: refusing to merge unrelated histories
+
+	解决方案：
+		1.git checkout master #切换到要提交代码的分支
+		2.git pull origin master --allow-unrelated-histories #加上后面这个选项允许不相关历史提交
+		3.git push origin master #提交到远程分支
