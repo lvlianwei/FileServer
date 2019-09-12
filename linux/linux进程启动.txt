@@ -1,0 +1,33 @@
+
+1 init 进程
+	init 进程，由内核启动的第一个用户级进程
+	内核自行启动之后，就通过启动一个用户级程序init的方式，完成引导进程。
+	init始终是第一个进程（其进程编号始终为1）
+	内核会在过去使用过的地方找init文件,查找不到ini系统启动失败
+	linux系统中位置：/sbin/init
+	===========================、
+	安卓系统
+		在安卓系统中init是由Android的Linux内核启动的第一个第一个进程。它的PID永远是1，并且这个进程是不会死亡的，如果它死亡，内核就会崩溃。
+		启动init进程后，init进程会fork出很多重要的进程。例如：zygote进程，所有的应用程序的进程都由zygote拉起
+	
+	
+2 init.rc
+	init.rc文件是规定init进程动作和行为的配置文件。
+	init.rc文件中只包含两种声明，on和service，我们可以把on称为行为，把service称为服务
+	service负责声明服务和服务的各种行为，但是具体的动作是在on中完成。
+	定义service
+			Service playservice /system/bin/playservice
+				class main            --------进程类别有main和core类型
+				user root            --------进程user权限，有system和root
+				group root            ----------进程group权限选择有system和root
+				disabled              ---------开机后手动启动服务。（在goni平台中，一般是缺掉该项，让服务可以自己启动。）
+	on
+		on early-init
+			write /proc/1/oom_score_adj -1000
+
+		on property:vold.decrypt=trigger_restart_min_framework
+				class_start main        -----------启动main下面的所有service（这里service是否属于main，在service定义的第一个属性确定）
+				
+		on分为两种，第一种一共有7个，它们是一定会随inti进程的启动而执行的。如：early-init
+		而第二种on则是在满足某些特定条件时才会启动的，如：自定义的on
+                
