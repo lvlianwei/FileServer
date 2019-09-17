@@ -1,0 +1,194 @@
+
+ 1 shell介绍
+	Shell 是一个用 C 语言编写的程序，它是用户使用 Linux 的桥梁。Shell 既是一种命令语言，又是一种程序设计语言。
+	Shell 是指一种应用程序，这个应用程序提供了一个界面，用户通过这个界面访问操作系统内核的服务。
+	Shell 脚本（shell script），是一种为 shell 编写的脚本程序。
+	由于习惯的原因，简洁起见，本文出现的 "shell编程" 都是指 shell 脚本编程，不是指开发 shell 自身。
+ 2 shell 分类
+	bash
+		bash shell是Bourne shell的一个免费版本，它是最早的Unix shell，包括许多附加的特点。Bash有可编辑的命令行，可以回查历史命令，支持tab键补齐以使
+		用户避免输入长的文件名。
+
+	csh
+		C shell使用的是“类C”的语法，借鉴了Bourne shell的许多特点，只是内部shell命令集有所不同。
+
+	ksh
+		Korn shell的语法与Bourne shell相同，同时具备了C shell的易用特点。许多安装脚本都使用ksh，即使不把它作为主shell，也应该在系统中安装它。
+	
+	tcsh
+		TC shell是C shell的一个增强版本，与C shell完全兼容。
+	
+	zsh
+		Z shell是Korn shell的一个增强版本，具备bash shell的许多特色。
+		
+3 第一个实例
+	Hello word  test.shs
+	#!/bin/bash
+	echo "Hello World !"
+
+	解析：
+		#！/bin/bash是一个约定的标记，它告诉系统这个脚本需要什么解释器来执行，即使用哪一种 Shell。
+
+	Echo “hello word” 窗口输出文本
+
+	执行：
+		方法1：
+				./test.sh
+		方法2；作为解释器参数
+				/bin/bash ./test.sh
+	
+4 shell语法
+	变量
+		定义
+			MyName=”max”
+			注意：
+				MyName和=号之间不能有空格。
+		
+		使用
+			Echo ${MyName}
+			花括号可加可不加，建议加上
+			
+		补充
+			变量可以多次赋值，最终的值根据最后的赋值决定。
+			只有在使用变量的时候才使用$
+			例如
+				myname="lvlianwei"
+				echo ${myname}
+				myname="max"
+				echo ${myname}
+		只读变量
+			myurl="www.baidu.com"
+			readonly myurl
+			此时myurl变量为只读变量，不可修改。
+		
+		删除变量
+			unset myname
+			注意：	
+				不可以删除只读变量
+				
+			
+	字符串
+	
+		定义
+			str='it is my time'
+		
+			str1="hello word"
+			区别：单引号中的字符串不能解析变量。会将${}按字符串输出
+					双引号中可以解析变量
+		
+		获取字符串的长度
+			echo ${#str}
+		
+		提取子字符串
+			#截取前三个字符串
+			echo ${str:1:3}
+					
+		查找子字符串
+			#查找字符t第一次出现的位置
+			echo `expr index "$str" t`
+	
+	数组
+		定义
+			array_name=(1 2 3 4 5)
+			或者
+			arr_name[0]=0
+			arr_name[1]=1
+			arr_name[2]=2
+			
+		
+		读取数组
+			读取单个元素
+				value=${array_name[1]}
+			
+			读取全部元素
+				echo ${array_name[@]}
+		
+		获取数组的长度
+			length=${#array_name[@]}
+			或者
+			length=${#array_name[*]}
+			
+			取得单个元素的长度
+			single_length=${array_name[3]}
+		
+		
+	
+	函数
+		格式
+		
+			functionName(){
+				......
+				（return）
+			}
+			
+		调用
+			functionName
+			
+		例子：
+			#!/bin/bash
+			funWithReturn(){
+				echo "这个函数会对输入的两个数字进行相加运算..."
+				echo "输入第一个数字: "
+				read aNum
+				echo "输入第二个数字: "
+				read anotherNum
+				echo "两个数字分别为 $aNum 和 $anotherNum !"
+				return $(($aNum+$anotherNum))
+			}
+			funWithReturn
+			echo "输入的两个数字之和为 $? !"
+		注意：
+			函数的返回值只能通过$?方式获得
+			所有函数在使用前必须定义
+			
+		函数传参
+			function(){
+				echo "第一个参数 $1"
+				echo "第二个参数 $2"
+				echo "第三个参数 $3"
+				echo "第10个参数 ${10}"
+			}
+			function
+			
+			执行：./test.sh 1 3 4 5
+			
+			注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n>=10时，需要使用${n}来获取参数。
+		
+
+	流程控制
+
+	Shell 输入/输出重定向
+		command > file	将输出重定向到 file。
+		command < file	将输入重定向到 file。
+		command >> file	将输出以追加的方式重定向到 file。
+		n > file	将文件描述符为 n 的文件重定向到 file。
+		n >> file	将文件描述符为 n 的文件以追加的方式重定向到 file。
+		n >& m	将输出文件 m 和 n 合并。
+		n <& m	将输入文件 m 和 n 合并。
+		<< tag	将开始标记 tag 和结束标记 tag 之间的内容作为输入。
+		
+		例子：	
+		
+	
+	Shell 文件包含
+		语法:
+			. filename   # 注意点号(.)和文件名中间有一空格
+			或者
+			source filename
+		注意：
+			被包含的文件可以没有执行权限。
+			
+	注释
+		单行注释
+			#echo "hello word"
+		
+		多行注释
+			:<<EOF
+				注释内容
+				注释内容
+			EOF
+	
+	
+	
+	
+	

@@ -1,0 +1,48 @@
+
+案例1 ：
+	LOCAL_PATH := $(call my-dir)
+
+　　include $(CLEAR_VARS)
+
+　　LOCAL_MODULE := hello
+
+　　LOCAL_SRC_FILES := hello.cpp
+
+　　inlcude $(BUILD_SHARED_LIBRARY)
+
+解析：
+	LOCAL_PATH := $(call my-dir)
+		　　每个Android.mk文件必须以LOCAL_PATH开始，指定项目的根路径，用于在开发tree中查找源文件
+　　		宏my-dir则由Build System提供，返回当前Android.mk文件的路径（固定写法）
+
+　　include $(CLEAR_VARS)
+		　CLEAR_VARS变量由Build System提供，并指向一个指定的GNU Makefile，由它清理各种LOCAL_xxx变量（因为所有的编译控制文件由同一个GNU make解析和执行，
+			这些变量都是全局的，所以清理后才能避免相互影响），比如LOCAL_MODULE，LOCAL_SRC_FILES，LOCAL_STATIC_LIBRARIES等，但是不清理LOCAL_PATH。
+
+　　LOCAL_MODULE := hello
+		　　LOCAL_MODULE模块必须定义
+
+　　LOCAL_SRC_FILES := hello.cpp
+			LOCAL_SRC_FILES变量必须要有，后面接需要编译的源码，如C/C++源码，可以不列出头文件，Build System会自动帮我们找出依赖文件
+
+　　inlcude $(BUILD_SHARED_LIBRARY)
+			BUILD_SHARED_LIBRARY是Build System提供的一个变量，指向GNU Makefile Script，它负责收集自从上次调用include $(CLEAR_VARS)后的所有LOCAL_xxx变量，并决定编译为什么
+　　		BUILD_STATIC_LIBRARY：编译为静态库
+　			BUILD_SHARED_LIBRARY：编译为动态库
+			BUILD_EXECUTABLE：编译为Native C可执行程序
+
+	
+	=============
+	include $(CLEAR_VARS) 和 include $(BUILD_PACKAGE)是一对，表示一个编译模块，编译模块中间的内容没有先后顺序，一个Android.mk文件中可以编写多个编译模块。 
+	=============
+	include $(call first-makefiles-under,$(LOCAL_PATH))    #在项目根目录下查找所有的mk文件，不包括当前目录
+	=======
+	LOCAL补充
+		LOCAL_STATIC_LIBRARIES := 所需要的静态库
+		LOCAL_SHARED_LIBRARIES := 所需的动态库
+		LOCAL_C_INCLUDES := 头文件所在的路径
+		LOCAL_MODULE_TAGS := user（user，eng，tests，optional）　　
+			#user，表示该模块只在user版本下进行编译。optional，表示该模块可以在所有版本下进行编译。
+			#其中，user表示用户版本，eng（engineering）表示工程版本，tests表示测试版
+		LOCAL_CFLAGS += -fno-access-control　　获取访问私有的权限
+　　　　　　　　　　-wno-unused-parameter　　取消函数参数未使用的警告
