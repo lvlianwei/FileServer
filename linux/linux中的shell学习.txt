@@ -19,9 +19,32 @@
 		TC shell是C shell的一个增强版本，与C shell完全兼容。
 	
 	zsh
-		Z shell是Korn shell的一个增强版本，具备bash shell的许多特色。
+		Z shell是Korn shell的一个增强版本，具备bash shell的许多特色。、
+	
+3 shell 命令
+		用户输入一个命令后，系统先检测是否为内置命令，如果不是，则再次检测是否为外部命令，不是则提示找不到命令。
 		
-3 第一个实例
+		内置命令
+			shell自带的命令，通话函数实现
+			shell启动后，这些命令会被加载到内存中
+			shell 常驻内存的程序，内置过多会占用太多内存空间
+			执行速度快
+			常用内置命令：
+				cd、kill、echo
+			可以通过type指令潘墩判断是否为内部指令
+			type cd
+			
+		
+		外置命令
+			一个独立的运行程序，运行时会开启一个新的进程。
+			外置命令实质是一个可执行的文件，存放在文件系统中
+			输入外部命令时，系统会在配置的PATH目录下查找该文件，如果有则执行，没有则报错。
+				查看PATH:$PATH  不同的路径之间以:分割
+				外部命令只在环境变量中指定的路径中查找。
+			需要启动新的程序，创建新的进程，速度较慢。
+			
+		
+4 第一个实例
 	Hello word  test.shs
 	#!/bin/bash
 	echo "Hello World !"
@@ -37,7 +60,7 @@
 		方法2；作为解释器参数
 				/bin/bash ./test.sh
 	
-4 shell语法
+5 shell语法
 	变量
 		定义
 			MyName=”max”
@@ -86,6 +109,7 @@
 		查找子字符串
 			#查找字符t第一次出现的位置
 			echo `expr index "$str" t`
+			
 	
 	数组
 		定义
@@ -154,8 +178,120 @@
 			
 			注意，$10 不能获取第十个参数，获取第十个参数需要${10}。当n>=10时，需要使用${n}来获取参数。
 		
+	运算符
+	
+	
+	test命令
+		
 
 	流程控制
+		if else
+			格式：
+				if condition
+				then
+					command1 
+					command2
+					...
+					commandN
+				else
+					command
+				fi
+				==================================
+				if condition1
+				then
+					command1
+				elif condition2 
+				then 
+					command2
+				else
+					commandN
+				fi
+				===================================
+				
+					
+			例子：	
+				a=10
+				b=20
+				if [ $a == $b ]
+				then
+				   echo "a 等于 b"
+				elif [ $a -gt $b ]
+				then
+				   echo "a 大于 b"
+				elif [ $a -lt $b ]
+				then
+				   echo "a 小于 b"
+				else
+				   echo "没有符合的条件"
+				fi
+			
+		for 循环
+			格式：	
+				for var in item1 item2 ... itemN
+				do
+					command1
+					command2
+					...
+					commandN
+				done
+				===================================
+				for var in item1 item2 ... itemN; do command1; command2… done;
+			例子：	
+				for loop in 1 2 3 4 5
+				do
+					echo "The value is: $loop"
+				done
+			
+		while 语句
+			格式	
+				while condition
+				do
+					command
+				done
+			例子：	
+				#!/bin/bash
+				int=1
+				while(( $int<=5 ))
+				do
+					echo $int
+					let "int++"
+				done
+		case
+			格式
+				case 值 in
+				模式1)
+					command1
+					command2
+					...
+					commandN
+					;;
+				模式2）
+					command1
+					command2
+					...
+					commandN
+					;;
+				esac
+			例子
+				echo '输入 1 到 4 之间的数字:'
+				echo '你输入的数字为:'
+				read aNum
+				case $aNum in
+					1)  echo '你选择了 1'
+					;;
+					2)  echo '你选择了 2'
+					;;
+					3)  echo '你选择了 3'
+					;;
+					4)  echo '你选择了 4'
+					;;
+					*)  echo '你没有输入 1 到 4 之间的数字'
+					;;
+				esac
+			
+		break/continue
+			跳出循环
+			例子略
 
 	Shell 输入/输出重定向
 		command > file	将输出重定向到 file。
@@ -177,6 +313,18 @@
 			source filename
 		注意：
 			被包含的文件可以没有执行权限。
+		例子：	
+			test1.sh
+				#!/bin/bash
+				url="http://www.runoob.com"
+			test2.sh	
+				#!/bin/bash
+				#使用 . 号来引用test1.sh 文件
+				. ./test1.sh
+
+				# 或者使用以下包含文件代码
+				# source ./test1.sh
+				echo "菜鸟教程官网地址：$url"
 			
 	注释
 		单行注释
