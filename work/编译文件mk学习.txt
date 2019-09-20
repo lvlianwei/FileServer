@@ -46,3 +46,4 @@
 			#其中，user表示用户版本，eng（engineering）表示工程版本，tests表示测试版
 		LOCAL_CFLAGS += -fno-access-control　　获取访问私有的权限
 　　　　　　　　　　-wno-unused-parameter　　取消函数参数未使用的警告
+	

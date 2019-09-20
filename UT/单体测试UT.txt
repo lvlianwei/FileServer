@@ -1,5 +1,5 @@
 个人理解；
-	gmock :一般进行打桩
+	gmock :通过打桩的方式进行单体测试
 	gtest：测试框架，与gmock结合
 
 1 白盒测试
@@ -18,23 +18,34 @@
 	gtest进行测试
 		举例：
 			1、比如银行业务，需要测试业务模块。此时，不可能去操作真实的数据库，并且搭建新的数据库可能比较复杂或者耗时。
-			那么就可以用gmock将数据库接口地方打桩，来模拟数据库操作。
+			那么就可以用gmock将数据库接口地方打桩，来模拟数据库操作。	
 			2、比如要测试A模块，必过A模块需要调用B模块的函数。如果B模块还没有实现，此时，就可以用gmock将B模块的某些接口打桩。
 			这样就可以让A模块的测试继续进行下去。
 	
 4 gmock安装
-	在github上下载gmock的安装包
-		https://github.com/google/googlemock
-	将下好的安装包上传到linux下。
-	在linux下解压
-		unzip google-master.zip
-	改名
-		mv google-master.zip  gmock
-	cd gmock
-	mkdir build
-	cd build 
-	cmake ..
-	将编译后的lib下的.a文件拷贝到/usr/local/lib下
+	方法一：
+		在github上下载gmock的安装包
+			https://github.com/google/googlemock
+		将下好的安装包上传到linux下。
+		在linux下解压
+			unzip google-master.zip
+		改名
+			mv google-master.zip  gmock
+		cd gmock
+		mkdir build
+		cd build 
+		cmake ..
+		这时build文件中有一个Makefile文件，这时，执行make命令。
+		在lib文件夹中生成.a文件
+		将编译后的lib下的.a文件拷贝到/usr/local/lib下
+	方法二：
+		git clone https://github.com/google/googletest
+		cd googletest
+		./travis.sh
+		cmake .
+		make
+		sudo make install
+
 	
 
 5 gmock使用
