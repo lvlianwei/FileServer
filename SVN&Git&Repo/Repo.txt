@@ -1,4 +1,6 @@
  
+ 学习地址 https://www.jianshu.com/p/9c57696165f3
+ 
  1 rep与git的关系
 	rep是对git的进一步封装,简化git，不是取代
 	大型项目，有多个仓库，rep维护着这些git库的信息，rep是通过一个名为manifests的git库来维护这些库之间的关系
