@@ -1,0 +1,16 @@
+1 在mock自己的类成员函数时。在addFunc（int a ,int b）中调用了get（）方法。这时，一定要注意，在实现时一定不要调用原来类的get方法。
+因为这个方法会在mock时被重新赋值，测试时调用的是mock中的get方法。
+		int FUNC::addORmin(int a,int b)
+		{
+			if(get())
+				return a+b;
+			else
+				return a-b;
+		}
+		
+2 bash: ./build.sh: /bin/bash^M: 解释器错误: 没有那个文件或目录
+	解决方案：
+		sed -i 's/\r$//'   test.sh
+		test.sh----需要运行的脚本名称
+	原因：
+		该文件在windows中打开过
