@@ -397,6 +397,17 @@
 			如果在测试中，在被测函数中传入了一个其他的类作为参数或者其他类作为该函数的局部变量，那么就需要这个类被打桩
 			一般根据参数类中在该函数中使用的方法，在桩类中进行打桩操作。
 			
+		3 如果一个Mock函数的返回类型是引用，你需要用ReturnRef()而不是Return()来返回
+		classMockFoo :public Foo {										
+		 public:										
+		 MOCK_METHOD0(GetBar, Bar&());										
+		};										
+		...										
+												
+		MockFoo foo;										
+		Bar bar;										
+		EXPECT_CALL(foo, GetBar()) .WillOnce(ReturnRef(bar));										
+
 			
 
 	

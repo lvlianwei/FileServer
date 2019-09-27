@@ -1,0 +1,26 @@
+version: 3.0
+repository: autotest/testframework
+unittest:
+  - type: gtest
+    product_type: .*
+    test_case_file:
+        name: gtstlaunchios
+        local: out/target/product/generic/system/bin
+        remote: /data/bin
+    test_library_files:
+        - name: libLaunchIosTest.so
+          local: out/target/product/generic/symbols/system/lib
+          remote: /data/lib
+          gcno_generate_path: out/target/product/generic/obj/SHARED_LIBRARIES/libLaunchIosTest_intermediates
+    resource_files:
+        - name: libLaunchIosTest.so
+          local: out/target/product/generic/symbols/system/lib
+          remote: /data/lib
+    source_code_path: frameworks/service/smartphoneservice
+    result_report: test-result-gtstsmartphoneservicetest.xml
+    set_env: LD_LIBRARY_PATH=/data/lib:/lib:/system/lib:/usr/lib/qt/lib PATH=/data/bin:/system/xbin:/sbin:/bin:/system/bin:/usr/sbin:/usr/lib/qt/bin
+    gcda_generate_path: data/local/tmp/profile
+    gcov_exclude:
+        - .*include.*
+        - .*test.*
+        - .*gtest.*

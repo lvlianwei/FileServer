@@ -77,3 +77,10 @@
 	
 14 set_new_handler
 	set_new_handler函数的作用是设置new_p指向的函数为new操作或new[]操作失败时调用的处理函数。
+	
+15 (.text+0x20)：对‘main’未定义的引用 问题
+	解决：
+		1 检出main函数写的是否有问题
+		2 检查makefile文件写的是否有问题，
+		一般这个问题的出现多数是makefile文件写的问题。
+

@@ -46,4 +46,39 @@
 			#其中，user表示用户版本，eng（engineering）表示工程版本，tests表示测试版
 		LOCAL_CFLAGS += -fno-access-control　　获取访问私有的权限
 　　　　　　　　　　-wno-unused-parameter　　取消函数参数未使用的警告
+
+		LOCAL_CFLAGS += -DXXX   相当于在所有源文件中增加一个宏定义#define XXX
+			eg:	
+			Android.mk中增加
+				ifeq ($(PRODUCT_MODEL),XXX_A)
+				LOCAL_CFLAGS += -DBUILD_MODEL1
+				endif
+				所编译的Cpp中如下使用：
+				#ifdef BUILD_MODEL1
+				....
+				#endif
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	

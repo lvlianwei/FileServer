@@ -1,0 +1,6 @@
+1 weeklyRelease地址
+	\\uranus.storm\iBigManny\Yagi\WeeklyRelease
+	
+	
+2 ReleaseCheck文档（上海服务器）
+	\\uranus\iBigManny\Yagi\ReleaseNote\ReleaseNote_SoC_Dalian.xls 
