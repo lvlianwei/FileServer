@@ -1,0 +1,6 @@
+
+1 介绍
+	AIDL，全称是Android Interface Define Language，即安卓接口定义语言，可以实现安卓设备中进程之间的通信（Inter Process Communication, IPC）。
+	个人理解：
+		在工作项目中用到该工具，一是为了实现定义的接口，二是实现各个Service之间的通信。
+

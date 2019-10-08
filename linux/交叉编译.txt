@@ -16,3 +16,7 @@
 	交叉工具链包括编译工具和链接工具。所以称为交叉工具链
 	常见的交叉编译器--arm-linux-gcc
 	常见的交叉链接工具----ld
+	
+4 ABI
+https://blog.csdn.net/zhouxiongjie/article/details/89140686
+	ABI全称:Application binary interface(应用程序二进制接口),定义了一套规则,允许编译好的二进制目标代码能在所有兼容该ABI的操作系统中无需改动就能运行.

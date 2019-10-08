@@ -1,0 +1,234 @@
+logcfg -c weblink:D
+logcfg -i weblink:D
+logcat -s weblink connectmanager -vtime
+
+ logcat -s weblinkscreen -v time | grep -v FrameDecoder_Gstreamer | grep -v WLVideoPlayer::writeData | grep -v "0x00, 0x00, 0x00" | grep -v "data size:" &
+
+logcfg -c UIUSB:D UIUSBL:D
+logcfg -i UIUSB:D UIUSBL:D
+logcat -s UIUSB UIUSBL funcusb usbservice usbplaylist -vtime
+
+logcfg -c uiipod:D
+logcfg -i uiipod:D 
+logcat -s uiipod -vtime
+
+logcfg -c *:D
+logcfg -i uiipod:I stsipod:I nmiapservice:I
+logcat -s uiipod stsipod nmiapservice -vtime
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbservice usbprovider usbdatabase usbutils usbbrowser usbplaylist usbbackup funcusb mpplayer -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbservice usbutils -vtime
+
+logcfg -c *:D
+logcat -s setting -vtime
+
+logcfg -c *:D
+logcfg -i DL_DISP:I stsipod:I nmipod:I funcipod:I nmiapservice:I
+logcat -s DL_DISP stsipod nmipod funcipod nmiapservice -vtime
+
+
+GMUsbService.cpp/notify_usbMount
+GMMediaScanner.cpp/startScan
+GMMediaScanner.cpp/scanFiles
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbservice connectmanager -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbbackup -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s SRC -vtime
+
+logcfg -c *:D
+logcfg -i SRC:I
+logcat -s SRC FSYS funcbt btservice -vtime
+
+logcfg -c *:D
+logcfg -i UIUSB:I
+logcat -s UIUSB -vtime
+
+logcfg -c *:D
+logcfg -i DL_DISP:I STSUSB:I
+logcat -s DL_DISP STSUSB -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s wfdservice mpplayer -vtime
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbservice usbplaylist -vtime
+
+
+logcfg -c *:D
+logcfg -i UIUSB:I DL_DISP:I DL_USB:I 
+logcat -s UIUSB DL_DISP DL_USB funcusb usbservice usbprovider usbdatabase usbutils usbbrowser usbplaylist -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s usbservice usbprovider usbprovider usbdatabase usbutils usbbrowser usbplaylist usbbackup -vtime
+
+logcfg -c *:D
+logcfg -i DL_DISP:I funcusb:I 
+logcat -s usbservice funcusb DL_DISP -vtime
+
+logcfg -c *:D
+logcfg -i DL_DISP:I funcusb:I
+logcat -s usbservice funcusb DL_DISP -vtime
+
+
+
+logcfg -c *:D
+logcfg -i DL_DISP:I funcusb:I WRAPPER:D
+logcat -s funcusb DL_DISP WRAPPER -vtime
+
+
+logcat -s usbservice -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkdata weblinkscreen nmiapservice connectmanager nmipod cmaoa nhpnp -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkdata weblinkscreen weblinkaudio cmaoa -vtime
+
+logcfg -c testm:D
+logcfg -i testm:I
+logcat -s testm -vtime
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkdata weblinkscreen weblinkinput -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkaudio -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s connectmanager -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkinput connectmanager funcmng InputManager -vtime
+
+logcfg -i VIDEOIN
+logcat -s weblink VIDEOIN weblinkscreen mpplayer mpseq mpdatasource -vtime
+echo "/data/" > /tmp/mpdatasource.dump.cfg
+，有数据传输后会在/data目录下生成一个文件，名子很长，将其名称改成以.h264结尾即可，然后拷贝到U盘中
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink connectmanager funcmng -vtime
+
+logcfg -c *:D
+logcfg -i weblink:D
+logcat -s weblink connectmanager cmaoa -vtime
+	
+logcfg -c *:D
+logcfg -i weblink:D
+logcat -s weblink connectmanager nmipod nmiapservice weblinkdata -vtime
+
+
+logcfg -c InputManager:D
+logcfg -i InputManager:D
+logcat -s InputManager -vtime
+
+
+logcfg -c *:D
+logcfg -i fwlink:D WEBLINK:I MM:I stswl:I weblink:D
+logcat -s weblink fwlink funcmng InputManager WEBLINK MM stswl -vtime
+
+　　5.logcat -g 查看缓冲区的大小
+
+　　logcat -g main
+
+　　logcat -g radio
+
+　　logcat -g events
+：/dev/log/main、/dev/log/events和/dev/log/radio
+
+[adb] logcat [<option>] ... [<filter-spec>] ...
+
+选项：
+
+
+-b <buffer> 指定要查看的日志缓冲区，可以是system,events ,radio,main . 默认值是system和main 。
+
+-c 清楚屏幕上的日志. 
+
+-d 输出日志到屏幕上. 
+
+-f <filename> 指定输出日志信息的<filename> ，默认是stdout . 
+
+-g 输出指定的日志缓冲区，输出后退出. 
+
+-n <count> 设置日志的最大数目<count> .，默认值是4，需要和 -r 选项一起使用。 
+
+-r <kbytes> 每<kbytes> 时输出日志，默认值为16，需要和-f 选项一起使用. 
+
+-s 设置默认的过滤级别为silent. 
+
+-v <format> 设置日志输入格式，默认的是brief 格式，要知道更多的支持的格式，参看Controlling Log Output 
+
+ps -T -p PID
+
+
+stop audioserver
+PULSE_DUMP_PCM_DIR=/tmp audioserver &
+
+
+logcfg -c weblink:D
+logcfg -i weblink:D
+logcat -s weblink weblinkaudio -vtime
+
+
+logcfg -c *:D
+logcfg -i weblink:D
+logcat -s weblink weblinkinput weblinkdata weblinkaudio weblinkscreen -vtime
+
+
+logcfg -c weblink:D
+logcfg -i weblink:D
+logcat -s weblink -vtime
+
+logcfg -c *:D
+logcfg -i weblink:D
+logcat -s weblink weblinkinput -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink connectmanager nhpnp -vtime
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkdata weblinkscreen connectmanager nhpnp -vtime
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkscreen -vtime
+
+
+logcfg -c *:D
+logcfg -i *:D
+logcat -s weblink weblinkscreen -vtime
+
+logcfg -c *:D
+logcat -s btservice btlib -vtime
+
+
