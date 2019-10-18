@@ -1,0 +1,63 @@
+
+1. 安装python，gcovr
+    sudo apt install python-setuptools
+    sudo apt install python-pip
+    sudo apt install gcovr
+
+2. 安装virtualenv
+    sudo pip install virtualenv
+
+
+3. 执行
+    mkdir uttest
+    cd uttest/
+    virtualenv venv --system-site-package
+    . venv/bin/activate
+	
+	-----
+		退出虚拟环境
+			deactivate
+	----
+
+4. 大编（在项目中选择full-eng，进行编译，注意：lunch前要初始化环境变量（source build/envsetup.sh ））
+    lunch full-eng
+    make -j4
+
+
+5. 编译吃的 
+	在项目目录下，执行下列命令
+    BUILD_COV_INSTRUMENT=False make clean-gtstlaunchios clean-libLaunchIosTest -j4
+    BUILD_COV_INSTRUMENT=True make gtstlaunchios libLaunchIosTest -j4
+
+6. 在新终端启动模拟器
+
+-----在执行到这一步时出现错误（emulator: ERROR: You did not specify a virtual device name, and the systemdirectory could not be found.），暂未解决
+	
+    out/host/linux-x86/bin/emulator-arm -kernel prebuilts/qemu-kernel/arm/kernel-qemu-armv7 -system /home/lvlianwei/20M/out/target/product/generic/system.img -ramdisk /home/lvlianwei/20M/out/target/product/generic/ramdisk.img -nocache -show-kernel -shell
+
+    out/host/linux-x86/bin/emulator-arm -kernel prebuilts/qemu-kernel/arm/kernel-qemu-armv7 -system /home/lvlianwei/Dragon/out/target/product/generic/system.img -ramdisk /home/lvlianwei/Dragon/out/target/product/generic/ramdisk.img -nocache -show-kernel -shell
+
+7. push到模拟器
+    adb -s emulator-5554 push out/target/product/generic/symbols/system/bin/gtstlaunchios /data/bin/gtstlaunchios
+    adb -s emulator-5554 push out/target/product/generic/symbols/system/lib/libLaunchIosTest.so /data/lib/libLaunchIosTest.so
+
+8. 在模拟器的终端执行
+    LD_LIBRARY_PATH=/data/lib:/lib:/system/lib:/usr/lib/qt/lib PATH=/data/bin:/system/xbin:/sbin:/bin:/system/bin:/usr/sbin:/usr/lib/qt/bin gtstlaunchios --gtest_output=xml:/data/test-result-gtstlaunchios.xml
+
+9. 从模拟器pull
+	adb -s emulator-5554 pull /data/test-result-gtstlaunchios.xml test_result/service_smartphoneservice/test-result-gtstlaunchios.xml
+	adb -s emulator-5554 pull /data/local/tmp/profile/out/target/product/generic/obj/SHARED_LIBRARIES/libLaunchIosTest_intermediates out/target/product/generic/obj/SHARED_LIBRARIES/libLaunchIosTest_intermediates
+	adb -s emulator-5554 pull /data/local/tmp/profile/out/target/product/generic/obj/EXECUTABLES/gtstlaunchios_intermediates out/target/product/generic/obj/EXECUTABLES/gtstlaunchios_intermediates
+
+10.拷贝
+ cp -r out/target/product/generic/obj/SHARED_LIBRARIES/libLaunchIosTest_intermediates/. frameworks/service/smartphoneservice
+ cp -r out/target/product/generic/obj/EXECUTABLES/gtstlaunchios_intermediates/. frameworks/service/smartphoneservice
+
+ 11.生成覆盖率
+	gcovr --gcov-executable=/home/lvlianwei/20M/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6/bin/arm-linux-androideabi-gcov --root=frameworks/service/smartphoneservice --exclude=.*tests.* -s --xml-pretty --output=test_result/test-gcov-smartphoneservice.xml
+
+    gcovr --gcov-executable=/home/lvlianwei/20M/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6/bin/arm-linux-androideabi-gcov --root=frameworks/service/smartphoneservice/ --exclude=.*tests.* -s --xml-pretty --output=test_result/service_smartphoneservice/test-gcov-gtstlaunchios.xml
+
+    lcov --gcov-tool=/home/lvlianwei/20M/prebuilts/gcc/linux-x86/arm/arm-linux-androideabi-4.6/bin/arm-linux-androideabi-gcov -c -d frameworks/service/smartphoneservice -t gtstlaunchios -o test-lcov-gtstlaunchios.info
+    genhtml -q test-lcov-gtstlaunchios.info --legend --highlight --no-function-coverage -o test-lcov-gtstlaunchios_result
+

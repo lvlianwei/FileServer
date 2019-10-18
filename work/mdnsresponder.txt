@@ -1,0 +1,6 @@
+1 介绍
+	在局域网内通信，就必须知道对方的IP地址和端口，苹果开源的mdnsResponder，就是利用mdns组播协议，
+	通过服务域名，来获取相应ip地址的一种方式。
+	
+	源码地址在：https://opensource.apple.com/tarballs/mDNSResponder/， 版本为：mDNSResponder-878.30.4.tar.gz
+

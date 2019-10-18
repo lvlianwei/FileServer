@@ -176,8 +176,11 @@ include $(BUILD_EXECUTABLE)
 include $(CLEAR_VARS)
 
 ifeq ($(TARGET_PRODUCT)_$(TARGET_BUILD_VARIANT), full_eng)
+#新定义声明UT_GTEST_FULL_ENG  #define。。。。
 LOCAL_CFLAGS += -DUT_GTEST_FULL_ENG
+#获取访问私有的权限
 LOCAL_CFLAGS += -fno-access-control
+
 endif
 
 LOCAL_MODULE        := libLaunchIosTest

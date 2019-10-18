@@ -1,0 +1,11 @@
+1  Goldfish 介绍    
+	基于qume修改的。
+	Goldfish是一种虚拟的ARM处理器，在Android的仿真环境中使用。Android模拟器通过运行它来运行arm926t指令集
+	（arm926t属于armv5构架，goldfish处理器有ARMv5和ARMv7两个版本，在一般情况下，使用ARMv5的版本即可）。
+
+	在linux的内核中，Goldfish作为ARM体系结构的一种“mach”，它的核心内容存放在：arch/arm/mach-goldfish。
+
+	goldfish_defconfig 位置：kernel/arch/arm/configs
+
+	说白了就是使用了该技术可以使用模拟器来运行android系统。
+	
