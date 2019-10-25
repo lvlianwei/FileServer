@@ -1,0 +1,90 @@
+
+ 1 android 源码中的prebuild文件夹是干啥的——————延期2（10/18）
+
+
+ 2  android MediaPlayer  ----延期（10/21）
+
+ 3 在serviceBase中，onAsyncRequest方法中，接收proxy发送的请求，下面代码中的GMTaskDes，在新的线程中传入定义的task ---- 延期（10/21）
+	这一块不是很理解
+      case USBMethod_Play:
+        {
+            // define request param
+            // unpack request param
+            // call request function
+            // play(id);
+            GMTaskDes des(Runnable_Pri_N, 0, "USBMethod_Play");
+            (m_pMainThread->looper()).postRunnable(GMTaskBind(des, this, &GMUsbServiceBase::play, id));
+            break;
+        }
+ 4 usb Timer
+
+ 5 next方法逻辑解析，USbDevicePlayer 的postNext方法中，有个stopTimer方法，这里不太理解，稍后解析。
+	这个timer是干啥的？
+  
+
+			
+			
+11 playlistInfo对象中的baseCount 和 fileCount这两个全局变量是干啥的
+	fileCount：在代码注释中解释： file count in this playlist, depend on file play mode, init in func: initCountInList()
+		即，fileCount是定义在playlist中的file的数量。
+	baseCount ：这个变量暂时不清楚。
+	
+12 在playlistInfo文件中的next方法参数中forceSequence参数作用。
+
+13 插入U盘的逻辑中connectManager层和usbService两层中间传递消息的类StorageInfo中的信息
+	mountPath 设备路径
+	volumeLabel 卷标签
+	isLastOn
+	usbSts
+	usbInfo类
+		// Vendor ID
+		android::String8 vid;
+	    // Product ID
+		android::String8 pid;
+		// Manufacturer Name（制造商name）
+		android::String8 manufacturer;
+		// Serial Number
+		android::String8 serialNum
+		// USB Port ID
+		int32_t port;
+		// The device id of USB Device
+		int32_t deviceId;
+		
+		bool unsupportDevice;
+		
+14 bzero和memset函数
+	https://blog.csdn.net/weixin_42235488/article/details/80589583
+	待整理。
+	
+15 NCAutoSync autoSync(m_innerSync); 这啥？？
+	 
+	 
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ 
+ 
+
+	
