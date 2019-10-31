@@ -59,9 +59,11 @@
 15 NCAutoSync autoSync(m_innerSync); 这啥？？
 	 
 	 
+16 电子货币、虚拟货币、数字货币三者的区别和联系。
+		
+17 在usbService中GMUsbDevicePlayer文件中的playStatusChanged方法参数中的mask是干啥的？
 
-		
-		
+18 
 		
 		
 		

@@ -1,0 +1,129 @@
+Linux 之U盘等文件系统挂载
+ 
+
+1 挂载的概念
+	访问其它文件系统
+	在linux文件系统下，想要访问其他文件系统的文件，必须将其他文件系统（U盘）关联至linux文件系统的根目录下的某个目录（通常是media目录）
+	该关联就称为挂载。（就是说要告诉自己的系统你的文件在哪里我的哪里）
+	linux根目录下的目录即为“挂载点”（另一个文件系统的访问入口）
+	解除此关联关系的过程称之为“卸载
+	
+	挂载：根文件系统外通过关联至根文件系统上的某个目录来实现访问
+	挂载点：mount_point，用于作为另一个文件系统的访问入口；
+	挂载的前提：
+		(1) 事先存在；
+		(2) 应该使用未被或不会被其它进程使用到的目录；
+		(3) 挂载点下原有的文件将会被隐藏；
+
+2 获取U盘的信息
+	序列号
+	供应商ID
+	产品ID
+	U盘路径
+	
+	#include <stdlib.h>
+	#include <stdio.h>
+	#include <string.h>
+	#include <unistd.h>
+	#include <fcntl.h>
+	#include <errno.h>
+	#include <scsi/scsi.h>
+	#include <scsi/sg.h>
+	#include <sys/ioctl.h>
+
+	int scsi_get_serial(int fd, void *buf, size_t buf_len)
+	{
+		//数组中是将要执行的SCSI命令
+		unsigned char inq_cmd[] = {INQUIRY, 1, 0x80, 0, buf_len, 0};
+		unsigned char sense[32];
+		struct sg_io_hdr io_hdr;
+		int result;
+
+		memset(&io_hdr, 0, sizeof(io_hdr));
+		io_hdr.interface_id = 'S';
+		io_hdr.cmdp = inq_cmd;
+		io_hdr.cmd_len = sizeof(inq_cmd);
+		io_hdr.dxferp = buf;
+		io_hdr.dxfer_len = buf_len;
+		io_hdr.dxfer_direction = SG_DXFER_FROM_DEV;
+		io_hdr.sbp = sense;
+		io_hdr.mx_sb_len = sizeof(sense);
+		io_hdr.timeout = 5000;
+
+		result = ioctl(fd, SG_IO, &io_hdr);
+		if (result < 0)
+			return result;
+
+		if ((io_hdr.info & SG_INFO_OK_MASK) != SG_INFO_OK)
+			return 1;
+
+		return 0;
+	}
+
+	int main(int argc, char **argv)
+	{
+		char *dev = "/dev/sdb4";
+		//序列号，ID，供应商ID
+		char scsi_serial[255];
+		char line[101];
+
+		int rc;
+		int fd;
+
+		fd = open(dev, O_RDONLY | O_NONBLOCK);
+		if (fd < 0)
+		{
+			perror(dev);
+		}
+		memset(scsi_serial, 0, sizeof(scsi_serial));
+		rc = scsi_get_serial(fd, scsi_serial, 255);
+		if (rc < 0)
+		{
+			printf("FAIL, rc=%d, errno=%d\n", rc, errno);
+		}
+		else if (rc == 1)
+		{
+			printf("FAIL, rc=%d, drive doesn't report serial number\n", rc);
+		}
+		else
+		{
+			printf("product id:");
+			for (int i = 15; i < 32; ++i)
+			{
+				putchar(scsi_serial[i]);
+			}
+			putchar('\n');
+
+			printf("producer id:");
+			for (int i = 8; i < 15; ++i)
+			{
+				putchar(scsi_serial[i]);
+			}
+			putchar('\n');
+
+			printf("serial number:");
+			for (int i = 8; i < 32; ++i)
+			{
+				putchar(scsi_serial[i]);
+			}
+			putchar('\n');
+		}
+		close(fd);
+		//获得U盘路径
+		FILE *fp = fopen("/proc/mounts", "r");
+		if (!fp)
+		{
+			perror(dev);
+		}
+		char *result = NULL;
+		char delims[] = " ";
+		while (fgets(line, sizeof(line), fp))
+			if (strstr(line, "/dev/sdb4"))
+			{
+				result = strtok(line, delims);
+				printf("%s", result); //打印该行。
+				result = strtok(NULL, delims);
+				printf("%s\n", result); //打印该行。
+			}
+		return (EXIT_SUCCESS);
+	}
