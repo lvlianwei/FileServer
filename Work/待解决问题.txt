@@ -32,7 +32,7 @@
 12 在playlistInfo文件中的next方法参数中forceSequence参数作用。
 
 13 插入U盘的逻辑中connectManager层和usbService两层中间传递消息的类StorageInfo中的信息
-	mountPath 设备路径
+	mountPath 挂载路径
 	volumeLabel 卷标签
 	isLastOn
 	usbSts
@@ -49,14 +49,13 @@
 		int32_t port;
 		// The device id of USB Device
 		int32_t deviceId;
-		
 		bool unsupportDevice;
 		
 14 bzero和memset函数
 	https://blog.csdn.net/weixin_42235488/article/details/80589583
 	待整理。
 	
-15 NCAutoSync autoSync(m_innerSync); 这啥？？
+15 usbService模块中的 GMUsbDataManager::mgrDb方法中的 NCAutoSync autoSync(m_innerSync)是干啥的。
 	 
 	 
 16 电子货币、虚拟货币、数字货币三者的区别和联系。
