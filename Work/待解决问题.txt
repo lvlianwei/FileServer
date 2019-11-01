@@ -62,7 +62,7 @@
 		
 17 在usbService中GMUsbDevicePlayer文件中的playStatusChanged方法参数中的mask是干啥的？
 
-18 
+
 		
 		
 		
