@@ -17,3 +17,12 @@
 			
 3 github  push 时报错fatal: sha1 file '<stdout>' write error: Invalid argument
 	一般是在此次push的文件中，存在过大的文件。
+	
+4 当使用git clone 克隆仓库时，使用git branch -a 查看所有的分支时，会多出一个origin/HEAD -> origin/master分支。
+	origin/HEAD就像一个指针，表示默认分支，你的例子中它指向origin/master，即origin/master是默认分支。
+	可以删除
+		git remote set-head origin -d
+		
+5 执行git push origin singleBranch : singleBranch命令时，提示error: dst ref refs/heads/singleBranch receives from more than one src.错误
+	命令参数问题
+	在git push origin singleBranch : singleBranch命令中，多打了两个空格。

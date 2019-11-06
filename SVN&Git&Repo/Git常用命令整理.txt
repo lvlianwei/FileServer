@@ -14,4 +14,96 @@
 	
 	git checkout -b [branch name] 创建+切换分支
 	
-3 创建孤儿分支
+	git checkout -b branchName commitId  根据指定版本号创建分支
+	
+	======创建孤儿分支=====
+	git checkout --orphan branchName  创建一个空分支，无父节点。
+		1 先执行创建无关分支的指令（这时git branch -a 是找不到该新分支的，必须执行完2后才可以）
+		2 执行git commit -am"将暂存区的内容全部提交"（这时执行git branch -a 可以看到新建的分支）
+		3 git rm -rf .  创建该分支时会复制原分支的所有文件，使用该命令清空所有文件。这时，本地创建了一个无关的新分支。\
+		4 git commit -m"提交"   执行删除操作后，提交到本地仓库中。
+		4 git push origin newBranchName:newBranchName 将新的分支合并到远程的分支中。
+
+		
+	
+3 删除文件
+	git rm ： 同时从工作区和索引中删除文件。即本地的文件也被删除了。
+	git rm --cached ： 从索引中删除文件。但是本地文件还存在， 只是不希望这个文件被版本控制
+	rm： 来删除文件，仅仅是删除了物理文件，没有将其从 git 的记录中剔除;
+	上述操作最后要执行git commit才真正提交到git仓库
+
+4 git clone URL 和git init 的区别****
+	git init命令是在本地创建一个git 仓库。想要将本地的仓库和远程的仓库建立连接，需要执行以下操作。
+		 git init  创建本地仓库
+		 git remote add origin git@192.168.0.253:backend/klmy-dispatch-service.git   将URL添加到该存储库
+		 git pull origin master --allow-unrelated-histories  将远程仓库拉取到本地仓库中 
+	git clone 是一个指令集合
+		> git init(创建本地存储库)
+		> git remote add(将URL添加到该存储库)
+		git fetch(从该URL中获取所有分支到本地存储库)
+		git checkout(创建工作树中主分支的所有文件)
+
+5 删除分支
+	git branch -d branchName  删除本地分支，注意，不可在当前分支下删除当前分支，切到master分支中再删除其他分支。
+	
+	git push origin  --delete branchName 删除远程的分支。在删除远程分支时，同名的本地分支并不会被删除，所以还需要单独删除本地同名分支
+	
+	git push origin :[branch name] 删除远程分支，相当于将一个空的分支合并到远程的指定分支上。
+	
+	
+6 push/pull 
+	git push <远程主机名> <本地分支名>:<远程分支名>
+	命令中的本地分支是指将要被推送到远端的分支，而远程分支是指推送的目标分支，即将本地分支合并到远程分支。
+	如果省略远程分支名，则表示将本地分支推送与之存在”追踪关系”的远程分支(通常两者同名)，如果该远程分支不存在，则会被新建。
+	 git push -u <远程主机名> <本地分支名>:<远程分支名>
+		如果当前分支与多个主机存在追踪关系，则可以使用 -u 参数指定一个默认主机，这样后面就可以不加任何参数使用git push，
+	
+	git pull <远程主机> <远程分支>:<本地分支>
+		例如：git pull origin master:my_test
+	如果省略本地分支，则将自动合并到当前所在分支上。如下：
+		git pull origin master
+
+7 版本回退
+	git log 查看当前分支的commit记录
+	git reset --hard/soft^ 回退到上一版
+	git reset --hard/soft^^ 回退到上上版
+	
+	git reset --hard commit_id    回退到指定版本
+	
+	
+	
+	
+	
+============================================================================
+	问题整理
+===========================================================================  
+1  使用git pull origin master上拉取github远程git库时，遇到fatal: refusing to merge unrelated histories
+
+	解决方案：
+		1.git checkout master #切换到要提交代码的分支
+		2.git pull origin master --allow-unrelated-histories #加上后面这个选项允许不相关历史提交
+		3.git push origin master #提交到远程分支
+		
+2 撤回已经提交到本地仓库文件。
+	1）本地修改的提交内容不保留
+			git log  找到当时提交时的commitID
+			git reset --hard commit_id    回退到指定版本
+		这时，本地的文件也会回退到指定的版本，也就是说你此次的修改不会被保留。
+	2）撤回到指定版本，但是本次修改的内容保留在本地。（一般用于你此次误提交了部分文件，想撤回本次提交后再重新提交）
+			git reset --soft  commitID	将此次修改的内容保留在本地。
+			
+3 github  push 时报错fatal: sha1 file '<stdout>' write error: Invalid argument
+	一般是在此次push的文件中，存在过大的文件。
+	
+4 当使用git clone 克隆仓库时，使用git branch -a 查看所有的分支时，会多出一个origin/HEAD -> origin/master分支。
+	origin/HEAD就像一个指针，表示默认分支，你的例子中它指向origin/master，即origin/master是默认分支。
+	可以删除
+		git remote set-head origin -d
+		
+5 执行git push origin singleBranch : singleBranch命令时，提示error: dst ref refs/heads/singleBranch receives from more than one src.错误
+	命令参数问题
+	在git push origin singleBranch : singleBranch命令中，多打了两个空格。
+	
+	
+
+
