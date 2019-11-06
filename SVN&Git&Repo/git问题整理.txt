@@ -6,3 +6,14 @@
 		1.git checkout master #切换到要提交代码的分支
 		2.git pull origin master --allow-unrelated-histories #加上后面这个选项允许不相关历史提交
 		3.git push origin master #提交到远程分支
+		
+2 撤回已经提交到本地仓库文件。
+	1）本地修改的提交内容不保留
+			git log  找到当时提交时的commitID
+			git reset --hard commit_id    回退到指定版本
+		这时，本地的文件也会回退到指定的版本，也就是说你此次的修改不会被保留。
+	2）撤回到指定版本，但是本次修改的内容保留在本地。（一般用于你此次误提交了部分文件，想撤回本次提交后再重新提交）
+			git reset --soft  commitID	将此次修改的内容保留在本地。
+			
+3 github  push 时报错fatal: sha1 file '<stdout>' write error: Invalid argument
+	一般是在此次push的文件中，存在过大的文件。
