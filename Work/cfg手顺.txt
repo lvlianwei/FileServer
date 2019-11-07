@@ -231,4 +231,5 @@ logcat -s weblink weblinkscreen -vtime
 logcfg -c *:D
 logcat -s btservice btlib -vtime
 
-
+logcfg -c *:D
+logcat -s smtios -vtime

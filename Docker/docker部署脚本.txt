@@ -1,0 +1,179 @@
+
+网址：https://blog.csdn.net/lslin405/article/details/75808194
+==============================
+#!/bin/bash
+
+#声明一个命令帮助容器，运行脚本时输入的第一个参数当作命令，根据命令做不同处理
+declare -A cmdHelpMap=()
+
+redColor="\033[31m"
+normalColor="\033[0m"
+yellowColor="\033[33m"
+scriptName=$0       #运行的脚本名字
+inputArgsNum=$#     #运行脚本时输入参数的个数
+
+#打印信息，对打印信息进行查找脚本名字，红色打印需要传递的参数
+function println()
+{
+    findScriptName=0  #是否找到脚本名字
+    index=0;
+
+    #遍历打印信息
+    for arg in $@
+    do
+        if [ ${arg} = ${scriptName} ]
+        then
+            findScriptName=1
+            echo -en "\n\t"
+        fi
+
+        if [ ${index} -gt ${inputArgsNum} ]
+        then
+            echo -en ${redColor}
+        fi
+        echo -en "${arg} "
+
+        if [ ${findScriptName} -eq 1 ]
+        then
+            let index++
+        fi
+    done
+    echo -e ${normalColor}
+}
+
+#参数处理，判断输入参数个数与帮助信息中需要的参数个数是否相等，不相等则打印帮助信息并退出
+function parameterHandling()
+{
+    findScriptName=0
+    argsNum=0;
+
+    key=$1
+    helpMsg=${cmdHelpMap[$key]} 
+
+    #遍历帮助信息总计需要输入的参数个数，帮助信息中出现脚本名字后开始统计，
+    #自动以空格分割帮助信息进行遍历
+    for msg in ${helpMsg}
+    do
+        if [ ${findScriptName} -eq 1 ]
+        then
+            let argsNum++
+        fi
+
+        if [ ${msg} = ${scriptName} ]
+        then
+            findScriptName=1
+        fi
+    done
+
+    #参数个数不相等处理
+    if [ ${inputArgsNum} -ne ${argsNum} ]
+    then
+        println ${helpMsg}
+        exit
+    fi
+}
+
+#确认操作
+function confirm()
+{
+    echo -ne "${yellowColor}$* ?[y/n]${normalColor}"
+    read input
+    if [ -z ${input} ]
+    then
+        exit
+    fi
+    if [ ${input} != "y" ]
+    then
+        exit
+    fi
+}
+
+#############################################################################################
+#添加命令只需要两步：
+#1、以命令为key，往cmdHelpMap中添加帮助信息
+#2、以命令为函数名定义命令处理函数
+#例如以下的help命令
+
+#help命令
+cmdHelpMap["help"]="查看帮助信息: ${scriptName} help"
+function help()
+{
+    inputArgsNum=0
+    println "Usage:"
+    preFunc=${FUNCNAME[1]}
+    number=1;
+    for key in ${!cmdHelpMap[@]}
+    do
+        println ${number}.${cmdHelpMap[$key]}
+        let number++
+    done
+}
+
+#install命令
+cmdHelpMap["install"]="安装docker: ${scriptName} install"
+function install()
+{
+    docker -v
+    if [ $? -eq 0 ]; then
+        confirm Docker已安装，确认是否继续安装
+    fi
+    curl -sSL https://get.daocloud.io/docker | sh
+}
+
+#run命令
+cmdHelpMap["run"]="运行容器: ${scriptName} run [imageName:imageTag] [hostPort:containerPort]"
+function run()
+{
+    image=$2
+    containerName=${image/:/-}
+    port=$3
+    docker run -d --name ${containerName} --restart=always -p ${port} ${image}
+    if [ $? -ne 0 ]; then
+        println ${redColor}运行${containerName}失败, 请检查镜像${image}是否存在
+        exit
+    fi
+}
+
+#rmi命令
+cmdHelpMap["rmi"]="删除镜像: ${scriptName} rmi [imageName:imageTag]"
+function rmi()
+{
+    image=$2
+    confirm 确定删除镜像${image}
+
+    docker rmi ${image}
+    if [ $? -ne 0 ]; then
+        println ${redColor}删除镜像失败, 请检查镜像${image}是否存在
+    fi
+}
+
+#rm命令
+cmdHelpMap["rm"]="删除容器: ${scriptName} rm [imageName-imageTag]"
+function rm()
+{
+    containerName=$2
+    docker rm -f ${containerName}
+    if [ $? -ne 0 ]; then
+        println ${redColor}删除容器失败, 请检查容器${containerName}是否存在
+    fi
+}
+
+#############################################################################################
+
+#如果第一个参数为空或者不存在map中，则默认第一个参数为help
+cmd=$1
+if [ -z $cmd ] || [ -z "${cmdHelpMap[$cmd]}" ]
+then
+    if [ $# -ne 0 ]
+    then
+        println ${redColor}无效参数:$*
+    fi
+    cmd="help"
+    inputArgsNum=1
+fi
+
+#参数处理
+parameterHandling $cmd
+
+#执行相应处理函数
+$cmd $*
