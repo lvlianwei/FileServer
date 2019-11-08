@@ -1,0 +1,4 @@
+服务器名称	云主机ID	所在网络ID	内网IP	公网IP
+未命名	ins-i101it5t	vpc-kcxaxeg6	172.21.0.16	49.233.201.43
+	
+服务器操作系统为 CentOS 7.5 64位 ，默认账户为 root ，初始密码为 4HGzIa5XxKW
