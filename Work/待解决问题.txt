@@ -21,8 +21,7 @@
  5 next方法逻辑解析，USbDevicePlayer 的postNext方法中，有个stopTimer方法，这里不太理解，稍后解析。
 	这个timer是干啥的？
   
-
-			
+	
 			
 11 playlistInfo对象中的baseCount 和 fileCount这两个全局变量是干啥的
 	fileCount：在代码注释中解释： file count in this playlist, depend on file play mode, init in func: initCountInList()
@@ -66,7 +65,7 @@
 		
 19 在oracle数据库的sql语句转为mysql语句时出现问题。		
 		
-		
+20 linux GRUB启动引导程序。		
 		
 		
 		
