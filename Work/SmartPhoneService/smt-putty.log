@@ -1,0 +1,599 @@
+=~=~=~=~=~=~=~=~=~=~=~= PuTTY log 2019.11.07 10:48:45 =~=~=~=~=~=~=~=~=~=~=~=
+[ 1537.247345] USB suspend. 7
+[ 1537.250049] panasonic_irq.. state CONFIGURED c212d000
+[ 1537.255096] iap2_complete -
+[ 1537.257878] panasonic_irq call iap2_complete out. 2
+[ 1537.262747] iap2_complete -
+[ 1537.265615] usb_gadget_state_work: state change: configured -> suspended
+[ 1537.272532] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 2
+01-01 00:38:40.564 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2Extract,line 177,notify_iap2Extract
+01-01 00:38:40.564 D/smtios  (   66): SmartIosManagerHandler::onIapExactHandler
+01-01 00:38:40.564 D/smtios  (   66): ****getServiceStub****
+[ 1538.482210] Receive iTron Acc off request reason = 0,last accoff reason:0, glastmiconReason:18
+[ 1538.493413] [UPDATE]:UDT_Service::onStop
+[ 1538.49?  @@  
+? ?           ??  0.545492] console [ttyS0] enabled
+[    0.549308] 6c05c300.serial: ttySM0 at MMIO 0x6c05c300 (irq = 125, base_baud = 12500000) is a MN-SIOEXT
+[    0.558890] [artwork_zone] register char dev ok, major = 252
+[    0.567157] loop: module loaded
+[    0.570752] slram: devname = mtd0
+[    0.574077] slram: devstart = 0x20700000
+[    0.577990] slram: devlength = +0x00600000
+[    0.582077] slram: devname=mtd0, devstart=0x20700000, devlength=0x600000
+[    0.589734] slram: Registered device mtd0 from 531456KiB to 537600KiB
+[    0.596162] slram: Mapped from 0xd4000000 to 0xd4600000
+[    0.601497] usbcore: registered new interface driver asix
+[    0.606933] usbcore: registered new interface driver ax88179_178a
+[    0.613068] usbcore: registered new interface driver cdc_ncm
+[    0.618735] over-current probe
+[    0.622152] [usb-vbus] register char dev ok, major = 251
+[    0.627530] mmc0: new high speed DDR MMC card at address 0001
+[    0.633374] [usb-vbus] set CHG_EN(gpio69) B+/ACC high, output USB VBUS
+[    0.640067] usbcore: registered new interface driver usb-storage
+[    0.646063] i2c /dev entries driver
+[    0.649751] pps pps0: new PPS source ktimer
+[    0.653926] pps pps0: ktimer PPS source registered
+[    0.658705] pps_ldisc: PPS line discipline registered
+[    0.663945] mmcblk0: mmc0:0001 008G30 7.28 GiB 
+[    0.668623] mmcblk0boot0: mmc0:0001 008G30 partition 1 8.00 MiB
+[    0.674681] mmcblk0boot1: mmc0:0001 008G30 partition 2 8.00 MiB
+[    0.680848]  mmcblk0: p1(system) p2(data) p3(var) p4(custom)
+[    0.688371]  mmcblk0boot1: unknown partition table
+[    0.694596]  mmcblk0boot0: unknown partition table
+[    0.699621] hidraw: raw HID events driver (C) Jiri Kosina
+[    0.705122] usbcore: registered new interface driver usbhid
+[    0.710682] usbhid: USB HID core driver
+[    0.714817] ashmem: initialized
+[    0.718092] logger: created 256K log 'log_main'
+[    0.722720] logger: created 256K log 'log_events'
+[    0.727524] logger: created 256K log 'log_radio'
+[    0.732236] logger: created 256K log 'log_system'
+[    0.737039] logger: created 256K log 'log_iauto_system'
+[    0.742379] logger: created 256K log 'log_iauto_events'
+[    0.747695] logger: created 256K log 'log_iauto_radio'
+[    0.752943] logger: created 256K log 'log_iauto_main'
+[    0.758519] usbcore: registered new interface driver snd-usb-audio
+[    0.765092] TCP: cubic registered
+[    0.768384] Initializing XFRM netlink socket
+[    0.773159] NET: Registered protocol family 10
+[    0.778243] sit: IPv6 over IPv4 tunneling driver
+[    0.783365] NET: Registered protocol family 17
+[    0.787827] NET: Registered protocol family 15
+[    0.792312] Key type dns_resolver registered
+[    0.797246] ALSA device list:
+[    0.800194]   No soundcards found.
+[    0.804056] Freeing unused kernel memory: 200K (c05fb000 - c062d000)
+[    0.812166] init: ####11,11,11,11
+[    0.815552] init: ####14,13,1,1
+[    0.818721] init: ####0,26,2e,f
+[    0.821878] init: calc xorvalueresult:f
+[    0.825804] init: settimeofday success
+[    0.829620] init: ********init start mode 0x11111111
+[    0.834614] init: Linux side start Normal mode!!!
+[    0.840294] iscdrv: module license 'Proprietary' taints kernel.
+[    0.846262] Disabling lock debugging due to kernel taint
+[    0.856587] gerda-pcm: probe pcm dev-0(card:0), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.867730] gerda-pcm: probe pcm dev-1(card:1), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.878821] gerda-pcm: probe pcm dev-2(card:2), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.889966] gerda-pcm: probe pcm dev-3(card:3), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.901077] gerda-pcm: probe pcm dev-4(card:4), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.912144] gerda-pcm: probe pcm dev-5(card:5), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.923243] gerda-pcm: probe pcm dev-6(card:6), name pcm(gerda-pcm pcm) card(Panasonic gerda-pcm Sound Card)
+[    0.982469] EXT4-fs (mmcblk0p1): mounted filesystem with ordered data mode. Opts: (null)
+[    0.991676] EXT4-fs (mmcblk0p2): Ignoring removed nomblk_io_submit option
+[    1.006753] EXT4-fs (mmcblk0p2): recovery complete
+[    1.012638] EXT4-fs (mmcblk0p2): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,noauto_da_alloc,nodelalloc,barrier=1,errors=continue,journal_checksum
+[    1.028668] EXT4-fs (mmcblk0p3): Ignoring removed nomblk_io_submit option
+[    1.051892] EXT4-fs (mmcblk0p3): recovery complete
+[    1.057780] EXT4-fs (mmcblk0p3): mounted filesystem with ordered data mode. Opts: nomblk_io_submit,noauto_da_alloc,nodelalloc,barrier=1,errors=continue,journal_checksum
+[    1.076211] hdcpdrv_init
+[    1.078850] this board cannot use hdcp unit
+[    1.085157] [INFO ][CNM_VPU_DRV][F:vpu_probe-L:1558][VPUDRV] vpu_probe
+[    1.091730] [INFO ][CNM_VPU_DRV][F:vpu_probe-L:1567][VPUDRV] : vpu base address get from defined value physical base addr=0x6c170000, virtual base=0xd3b10000
+[    1.105845] [INFO ][CNM_VPU_DRV][F:vpu_probe-L:1612][VPUDRV] : get clock controller s_vpu_clk=fffffffe
+[    1.115162] [INFO ][CNM_VPU_DRV][F:vpu_probe-L:1627][VPUDRV] : vpu irq number get from defined value irq=0xe5
+[    1.125234] [INFO ][CNM_VPU_DRV][F:vpu_probe-L:1656][VPUDRV] success to probe vpu device with reserved video memory phys_addr=0x8539dc00, base = 0xd4800c00
+[    1.154131] panasonic_udc panasonic_udc.0: Panasonic USB Peripheral Controller
+[    1.161391] panasonic_udc panasonic_udc.0: usb_irq 151, mem d3b16000, DMA
+[    1.168189] panasonic_udc panasonic_udc.0: dma_irq_out 166, dma_irq_in 167
+[    1.175074] panasonic_udc panasonic_udc.0: version: 2014 October
+[    1.181232] usb_gadget_state_work: state unchange: not attached -> not attached
+[    1.237979] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    1.244620] HS_SWING_SEL register:0x00800534
+[    1.248903] HS_SLEW_CTL register:0x008008C5
+[    1.253092] TRIM_SQUE_DETEC register:0x00800940
+[    1.257628] GET CALIBRATION register:0x00801380
+[    1.262171] GET RTRIM_SEL_T register:0x0080041A
+[    1.266708] GET PLL Gain register:0x00800641
+[    1.277122] panasonic-ehci panasonic-ehci.0: panasonic EHCI Host Controller
+[    1.284127] panasonic-ehci panasonic-ehci.0: new USB bus registered, assigned bus number 1
+[    1.292496] panasonic-ehci panasonic-ehci.0: irq 150, io mem 0x6c00a000
+[    1.308948] panasonic-ehci panasonic-ehci.0: USB 2.0 started, EHCI 1.00(v0333)
+[    1.316904] hub 1-0:1.0: USB hub found
+[    1.320726] hub 1-0:1.0: 1 port detected
+[    1.325502] init: do_mknod can not create /dev/hdcpdrv
+[    1.335787] [INFO ][CNM_VPU_DRV][F:vpu_open-L:783][VPUDRV] vpu_open
+[    1.342144] [INFO ][CNM_VPU_DRV][F:vpu_release-L:1312][VPUDRV] vpu_release
+[    1.349037] [INFO ][CNM_VPU_DRV][F:vpu_release-L:1350]vpu_release open count: 0
+[    1.356451] [INFO ][CNM_VPU_DRV][F:vpu_open-L:783][VPUDRV] vpu_open
+[    1.362752] [INFO ][CNM_VPU_DRV][F:vpu_release-L:1312][VPUDRV] vpu_release
+[    1.369640] [INFO ][CNM_VPU_DRV][F:vpu_release-L:1350]vpu_release open count: 0
+[    1.377028] Operation of fsel_gpio128 is not permitted: 2 != 9
+[    1.382921] Operation of fsel_gpio141 is not permitted: 0 != 9
+[    1.388804] Operation of fsel_gpio32 is not permitted: 0 != 9
+[    1.394603] Operation of fsel_gpio91 is not permitted: 0 != 9
+[    1.430025] (II) linuxcrashdump: main() start Dump ==
+[    1.539907] (II) linuxcrashdump: main() /proc/linux_crash_dump  not exist  do nothing ==
+uid=0 gid=0@goni:/ # [    2.014133] Receive iTron ACC on value mode : 0, serial :15, location :0, setid :2, auxiMsg:3,lastaccoffreason:0,miconreason:18, setidsecond:59303031
+[    2.116648] Linux Receive acc on confirmation!
+[    2.187290] [UPDATE]:UDT_Process::onInitialize
+[    3.325346] random: audioserver: uninitialized urandom read (4 bytes read, 109 bits of entropy available)
+[    3.421884] random: audioserver: uninitialized urandom read (4 bytes read, 109 bits of entropy available)
+[    3.522130] random: audioserver: uninitialized urandom read (4 bytes read, 109 bits of entropy available)
+[    3.669373] random: audioserver: uninitialized urandom read (256 bytes read, 124 bits of entropy available)
+[    3.738802] random: nonblocking pool is initialized
+[    4.150614] [UPDATE]:UDT_Service::onStart
+[    4.157130] Linux key service Ready!
+[    4.376279] Linux all service Ready!
+[    4.732610] mn-sioext 6c05c300.serial: baudrate(9600)SIOTOP_CYCLE(11515)
+[    4.809857] mn-sioext 6c05c300.serial: baudrate(9600)SIOTOP_CYCLE(11515)
+[    4.887644] mn-sioext 6c05c300.serial: baudrate(115200)SIOTOP_CYCLE(1806b)
+[    5.088782] mn-sioext 6c05c300.serial: baudrate(921600)SIOTOP_CYCLE(1900c)
+
+uid=0 gid=0@goni:/ # logcat -s smtios -vtime
+
+--------- beginning of /dev/log/main
+
+
+=============insert ios device==============================
+[   60.208990] usb 1-1: new high-speed USB device number 2 using panasonic-ehci
+[   60.347432] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[   60.353854] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[   60.361753] Set charge current 1000 mA OK!
+[   60.381933] hid-generic 0003:05AC:12A8.0001: hiddev0,hidraw0: USB HID v1.11 Device [Apple Inc. iPhone] on usb-panasonic-ehci.0-1/input2
+[   60.715122] XXX: usbhid_xxx rcv call        1
+
+=====插入设备后，将设备存在数据库中，同时发广播。
+01-01 00:39:45.892 D/smtios  (   66): notify_iap2Insert,isCarplaySupp 1
+01-01 00:39:45.892 D/smtios  (   66): onIapDeviceInsert serialNumber ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:39:45.892 D/smtios  (   66): onIapDeviceInsert isCarplaySupp 1
+01-01 00:39:45.892 D/smtios  (   66): SmartIosManagerHandler::onIapDeviceInsertHandler
+01-01 00:39:45.892 D/smtios  (   66): serial number is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c   length is 40
+01-01 00:39:45.892 D/smtios  (   66): isCarplaySupp 1
+01-01 00:39:45.892 D/smtios  (   66): iapDeviceInsert, device serialNum is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:39:45.892 D/smtios  (   66): use sqlite3 db
+01-01 00:39:45.896 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:39:45.896 D/smtios  (   66): reusltCount = 1
+01-01 00:39:45.896 D/smtios  (   66): the device is pop device
+01-01 00:39:45.896 D/smtios  (   66): priority 3,popStatus 2,devnmae iPhone
+01-01 00:39:45.896 D/smtios  (   66): line 621,index 3,popStatus 2
+01-01 00:39:45.896 D/smtios  (   66): ****getServiceStub****
+
+
+//调用lanchsource方法，与connectManager通信，应该是加载不同类型资源去了
+01-01 00:39:45.900 D/smtios  (   66): SmartIosManagerHandler::onLaunchSourceReqHandler
+01-01 00:39:45.900 D/smtios  (   66): onLaunchSourceReqHandler index 3 source 2
+01-01 00:39:45.900 D/smtios  (   66): current launch state is 0
+01-01 00:39:45.900 D/smtios  (   66): launchIosSourceReq req source 2
+01-01 00:39:45.900 D/smtios  (   66): launchIosSourceReq real source 1
+
+[   61.083196] g_carlife gadget: high-speed config #1: CarLife
+[   61.088790] [eap] in eap_set_alt, line = 676, intf = 1, alt = 0
+[   61.094783] [eap] in eap_set_alt, line = 676, intf = 2, alt = 0
+[   61.100689] [eap] altsetting = 0, EA Native Session Stop
+[   61.106088] usb_gadget_state_work: state change: suspended -> configured
+[   61.113670] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 1
+[   61.792752] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[   61.800254] ===uac2_srate_evt_read, line=1531, c_srate=44100
+[   61.806718] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[   61.814193] ===uac2_srate_evt_read, line=1531, c_srate=44100
+[   61.819896] ===audio_ep0_complete, line=1394 c_srate=48000 wake_up_interruptible
+[   61.827381] ===uac2_srate_evt_read, line=1531, c_srate=48000
+[   61.976038] [eap] in eap_set_alt, line = 676, intf = 2, alt = 1
+[   61.981954] [eap] altsetting = 1, EA Native Session Start
+[   62.031193] altset_open: open eap altsetting dev
+
+
+01-01 00:39:47.208 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2AuthInfo,line 209,serialnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devname iPhone
+01-01 00:39:47.208 D/smtios  (   66): ###################frameworks/service/smartphoneservice/src/SmartIosServiceStub.cpp::onIap2AuthInfo,line 151
+01-01 00:39:47.208 D/smtios  (   66): serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:39:47.208 D/smtios  (   66): line 223,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:39:47.208 D/smtios  (   66): SmartIosManagerHandler::onDevAutoInfoHandler
+01-01 00:39:47.208 D/smtios  (   66): onDevAutoInfoHandler,devinfo.serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devinfo.devname iPhone
+01-01 00:39:47.208 D/smtios  (   66): SmartIosSettingProxy::setDeviceName,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c length 40,devname iPhone length 6
+01-01 00:39:47.208 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:39:47.208 D/smtios  (   66): the device is pop device
+01-01 00:39:47.208 D/smtios  (   66): name.format.deviceName iPhone length 6
+01-01 00:39:47.208 D/smtios  (   66): the devname is same,not need update
+01-01 00:39:47.208 D/smtios  (   66): mid -1
+01-01 00:39:47.208 D/smtios  (   66): after get devname,need get dev info,nofity UI
+01-01 00:39:47.208 D/smtios  (   66): get dev info,req->id -1
+01-01 00:39:47.208 D/smtios  (   66): SmartIosServiceManager::onGetDevInfoReqHandler index 0 reqType 0
+01-01 00:39:47.208 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:39:47.208 D/smtios  (   66): get table success
+01-01 00:39:47.208 D/smtios  (   66): nrow 3,ncol 6
+01-01 00:39:47.208 D/smtios  (   66): seirnum 0000802000162DCC362A002E,priority 1,popStatus 1,devname ixr10
+01-01 00:39:47.208 D/smtios  (   66): seirnum 6d57c7f6cf582dd6208a53925ea23e159d7952ef,priority 2,popStatus 1,devname 朱海明的 iPhone
+01-01 00:39:47.208 D/smtios  (   66): seirnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,priority 3,popStatus 2,devname iPhone
+
+01-01 00:39:47.208 D/smtios  (   66): onGetDevInfoReqHandler success
+01-01 00:39:47.208 D/smtios  (   66): onGetDevInfoReqHandler success count 3
+01-01 00:39:47.208 D/smtios  (   66): onGetDevInfoReqHandler index 1,pop 0, reqType 0 total 3 namelen 5,name ixr10
+01-01 00:39:47.208 D/smtios  (   66): ****getServiceReplier****
+01-01 00:39:47.208 D/smtios  (   66): onGetDevInfoReqHandler index 2,pop 0, reqType 0 total 3 namelen 19,name 朱海明的 iPhone
+01-01 00:39:47.208 D/smtios  (   66): ****getServiceReplier****
+01-01 00:39:47.208 D/smtios  (   66): onGetDevInfoReqHandler index 3,pop 0, reqType 0 total 3 namelen 6,name iPhone
+01-01 00:39:47.208 D/smtios  (   66): ****getServiceReplier****
+
+[   62.497373] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[   62.504875] ===uac2_srate_evt_read, line=1531, c_srate=44100
+[   64.393455] Bits 55-60 of /proc/PID/pagemap entries are about to stop being page-shift some time soon. See the linux/Documentation/vm/pagemap.txt for details.
+============================================end==================================[  103.048032] [eap] in eap_set_alt, line = 676, intf = 2, alt = 0
+[  103.053952] [eap] altsetting = 0, EA Native Session Stop
+
+
+
+
+=========================================== pull out ios device================================
+[  173.270739] USB suspend. 7
+[  173.273442] panasonic_irq.. state CONFIGURED c212d000
+[  173.278487] iap2_complete -
+[  173.281269] panasonic_irq call iap2_complete out. 2
+[  173.286139] iap2_complete -
+[  173.289003] usb_gadget_state_work: state change: configured -> suspended
+[  173.296383] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 2
+
+01-01 00:41:38.584 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2Extract,line 177,notify_iap2Extract
+01-01 00:41:38.588 D/smtios  (   66): SmartIosManagerHandler::onIapExactHandler
+01-01 00:41:38.588 D/smtios  (   66): ****getServiceStub****
+
+[  174.491637] [g_carlife] module exit START
+[  174.496335] portnum=0 portsc baseaddr=6c00a184
+[  174.501309] [iap2] iap2_unbind OK
+[  174.505841] [eap] eap_unbind OK
+[  174.514125] [uac2] uac2_unbind_config OK
+[  174.518454] [g_carlife] module exit OKsmt_launchSource
+[  175.023946] [usb-vbus] VBUS RESET start
+[  175.728951] [usb-vbus] in B+/ACC OFF, set USB_EN high, rw32 = 0x3030,rw32_acc = 0xbef70000
+[  175.737254] [usb-vbus] VBUS RESET end
+=============================================================end===============================================
+
+
+
+
+
+
+
+===============================================insert ios device ===============================================
+[  215.297001] usb 1-1: new high-speed USB device number 3 using panasonic-ehci
+[  215.439152] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[  215.445565] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[  215.453504] Set charge current 1000 mA OK!
+[  215.473388] hid-generic 0003:05AC:12A8.0002: hiddev0,hidraw0: USB HID v1.11 Device [Apple Inc. iPhone] on usb-panasonic-ehci.0-1/input2
+[  215.812122] XXX: usbhid_xxx rcv call        1
+01-01 00:42:20.988 D/smtios  (   66): notify_iap2Insert,isCarplaySupp 1
+01-01 00:42:20.988 D/smtios  (   66): onIapDeviceInsert serialNumber ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:42:20.988 D/smtios  (   66): onIapDeviceInsert isCarplaySupp 1
+01-01 00:42:20.988 D/smtios  (   66): SmartIosManagerHandler::onIapDeviceInsertHandler
+01-01 00:42:20.988 D/smtios  (   66): serial number is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c   length is 40
+01-01 00:42:20.988 D/smtios  (   66): isCarplaySupp 1
+01-01 00:42:20.988 D/smtios  (   66): iapDeviceInsert, device serialNum is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:42:20.988 D/smtios  (   66): use sqlite3 db
+01-01 00:42:20.992 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:42:20.992 D/smtios  (   66): reusltCount = 1
+01-01 00:42:20.992 D/smtios  (   66): the device is pop device
+01-01 00:42:20.992[  215.898273] usb 1-1: USB disconnect, device number 3
+ D/smtios  (   66): priority 3,popStatus 2,devnmae iPhone
+01-01 00:42:20.992 D/smtios  (   66): line 621,index 3,popStatus 2
+01-01 00:[  215.915126] carlife_bind, line=160
+42:20.99[  215.919399] eap_bind, line=776
+2 D/smtios  (   66): ****getServiceStub****
+01-01 00:42:20.996 D/smtios  (   66): Smart[  215.929724] g_carlife gadget: CarLife Gadget
+IosManag[  215.934689] g_carlife gadget: g_carlife ready
+erHandle[  215.939753] portnum=0 portsc baseaddr=6c00a184
+r::onLaunchSourceReqHandler
+01-01 00:42[  215.948272] USB suspend. -1
+:20.996 [  215.951231] usb_gadget_state_work: state change: not attached -> suspended
+D/smtios  (   66): onLaunchSourceReqHandler index 3 source 2
+01-01 00:42:20.996 D/smtios  (   66): current launch state is 0
+01-01 00:42:20.996 D/smtios  (   66): launchIosSourceReq req source 2
+01-01 00:42:20.996 D/smtios  (   66): launchIosSourceReq real source 1
+[  216.185552] g_carlife gadget: high-speed config #1: CarLife
+[  216.191145] [eap] in eap_set_alt, line = 676, intf = 1, alt = 0
+[  216.197138] [eap] in eap_set_alt, line = 676, intf = 2, alt = 0
+[  216.203045] [eap] altsetting = 0, EA Native Session Stop
+[  216.208434] usb_gadget_state_work: state change: suspended -> configured
+[  216.215985] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 1
+[  216.651239] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[  216.658750] ===uac2_srate_evt_read, line=1531, c_srate=44100
+[  216.665254] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[  216.672742] ===uac2_srate_evt_read, line=1531, c_srate=44100
+[  216.678431] ===audio_ep0_complete, line=1394 c_srate=48000 wake_up_interruptible
+[  216.685903] ===uac2_srate_evt_read, line=1531, c_srate=48000
+[  216.800559] altset_open: open eap altsetting dev
+01-01 00:42:22.048 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2AuthInfo,line 209,serialnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devname iPhone
+01-01 00:42:22.048 D/smtios  (   66): ###################frameworks/service/smartphoneservice/src/SmartIosServiceStub.cpp::onIap2AuthInfo,line 151
+01-01 00:42:22.048 D/smtios  (   66): serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:42:22.048 D/smtios  (   66): line 223,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:42:22.048 D/smtios  (   66): SmartIosManagerHandler::onDevAutoInfoHandler
+01-01 00:42:22.048 D/smtios  (   66): onDevAutoInfoHandler,devinfo.serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devinfo.devname iPhone
+01-01 00:42:22.048 D/smtios  (   66): SmartIosSettingProxy::setDeviceName,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c length 40,devname iPhone length 6
+01-01 00:42:22.048 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:42:22.048 D/smtios  (   66): the device is pop device
+01-01 00:42:22.048 D/smtios  (   66): name.format.deviceName iPhone length 6
+01-01 00:42:22.048 D/smtios  (   66): the devname is same,not need update
+01-01 00:42:22.048 D/smtios  (   66): mid -1
+01-01 00:42:22.048 D/smtios  (   66): after get devname,need get dev info,nofity UI
+01-01 00:42:22.048 D/smtios  (   66): get dev info,req->id -1
+01-01 00:42:22.048 D/smtios  (   66): SmartIosServiceManager::onGetDevInfoReqHandler index 0 reqType 0
+01-01 00:42:22.048 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:42:22.048 D/smtios  (   66): get table success
+01-01 00:42:22.048 D/smtios  (   66): nrow 3,ncol 6
+01-01 00:42:22.048 D/smtios  (   66): seirnum 0000802000162DCC362A002E,priority 1,popStatus 1,devname ixr10
+01-01 00:42:22.048 D/smtios  (   66): seirnum 6d57c7f6cf582dd6208a53925ea23e159d7952ef,priority 2,popStatus 1,devname 朱海明的 iPhone
+01-01 00:42:22.048 D/smtios  (   66): seirnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,priority 3,popStatus 2,devname iPhone
+01-01 00:42:22.048 D/smtios  (   66): onGetDevInfoReqHandler success
+01-01 00:42:22.048 D/smtios  (   66): onGetDevInfoReqHandler success count 3
+01-01 00:42:22.048 D/smtios  (   66): onGetDevInfoReqHandler index 1,pop 0, reqType 0 total 3 namelen 5,name ixr10
+01-01 00:42:22.048 D/smtios  (   66): ****getServiceReplier****
+01-01 00:42:22.048 D/smtios  (   66): onGetDevInfoReqHandler index 2,pop 0, reqType 0 total 3 namelen 19,name 朱海明的 iPhone
+01-01 00:42:22.048 D/smtios  (   66): ****getServiceReplier****
+01-01 00:42:22.048 D/smtios  (   66): onGetDevInfoReqHandler index 3,pop 0, reqType 0 total 3 namelen 6,name iPhone
+01-01 00:42:22.048 D/smtios  (   66): ****getServiceReplier****
+[  217.355741] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[  217.363238] ===uac2_srate_evt_read, line=1531, c_srate=44100
+==============================endl===========================================
+
+
+
+
+=========================click usb ipod button=======================================
+01-01 00:43:03.332 D/smtios  (   66): SmartIosManagerHandler::onLaunchSourceReqHandler
+01-01 00:43:03.332 D/smtios  (   66): onLaunchSourceReqHandler index 3 source 2
+01-01 00:43:03.332 D/smtios  (   66): current launch state is 0
+01-01 00:43:03.332 D/smtios  (   66): launchIosSourceReq req source 2
+01-01 00:43:03.332 D/smtios  (   66): launchIosSourceReq real source 1
+
+[  259.241708] ===audio_ep0_complete, line=1394 c_srate=44100 wake_up_interruptible
+[  259.249328] ===uac2_srate_evt_read, line=1531, c_srate=44100
+=============================endl==========================
+
+
+
+
+
+
+
+
+=======================click weblink  button=====================
+01-01 00:43:43.120 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:43:43.120 D/smtios  (   66): onSetPopStatusReqHandler setType 0 index 3 pop 2
+01-01 00:43:43.124 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 0,index 3, setting 2
+01-01 00:43:43.124 D/smtios  (   66): line 1442,pop set
+01-01 00:43:43.124 D/smtios  (   66): use sqlite3 db
+01-01 00:43:43.124 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.128 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.128 D/smtios  (   66): update pop value success,index 3,popValue 2
+01-01 00:43:43.136 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.136 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:43:43.136 D/smtios  (   66): ****getServiceReplier****
+01-01 00:43:43.136 D/smtios  (   66): SmartIosManagerHandler::onLaunchSourceReqHandler
+01-01 00:43:43.136 D/smtios  (   66): onLaunchSourceReqHandler index 3 source 1
+01-01 00:43:43.136 D/smtios  (   66): current launch state is 0
+01-01 00:43:43.136 D/smtios  (   66): launchIosSourceReq req source 1
+01-01 00:43:43.136 D/smtios  (   66): launchIosSourceReq real source 4
+01-01 00:43:43.136 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:43:43.140 D/smtios  (   66): onSetPopStatusReqHandler setType 0 index 3 pop 2
+01-01 00:43:43.140 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 0,index 3, setting 2
+01-01 00:43:43.140 D/smtios  (   66): line 1442,pop set
+01-01 00:43:43.140 D/smtios  (   66): use sqlite3 db
+01-01 00:43:43.140 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.140 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.140 D/smtios  (   66): update pop value success,index 3,popValue 2
+01-01 00:43:43.160 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:43:43.160 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:43:43.160 D/smtios  (   66): ****getServiceReplier****
+01-01 00:43:43.160 D/smtios  (   66): SmartIosManagerHandler::onLaunchSourceReqHandler
+01-01 00:43:43.160 D/smtios  (   66): onLaunchSourceReqHandler index 3 source 1
+01-01 00:43:43.160 D/smtios  (   66): current launch state is 0
+01-01 00:43:43.164 D/smtios  (   66): launchIosSourceReq req source 1
+01-01 00:43:43.164 D/smtios  (   66): launchIosSourceReq real source 4
+=====================================endk==================================================
+
+
+============================click setting smartphone button======================
+=============================click iphone button========================
+01-01 00:44:52.056 D/smtios  (   66): get dev info,req->id 3
+01-01 00:44:52.056 D/smtios  (   66): SmartIosServiceManager::onGetDevInfoReqHandler index 1 reqType 0
+01-01 00:44:52.056 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:44:52.056 D/smtios  (   66): get table success
+01-01 00:44:52.056 D/smtios  (   66): nrow 3,ncol 6
+01-01 00:44:52.056 D/smtios  (   66): seirnum 0000802000162DCC362A002E,priority 1,popStatus 1,devname ixr10
+01-01 00:44:52.056 D/smtios  (   66): seirnum 6d57c7f6cf582dd6208a53925ea23e159d7952ef,priority 2,popStatus 1,devname 朱海明的 iPhone
+01-01 00:44:52.056 D/smtios  (   66): seirnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,priority 3,popStatus 2,devname iPhone
+01-01 00:44:52.056 D/smtios  (   66): onGetDevInfoReqHandler success
+01-01 00:44:52.056 D/smtios  (   66): onGetDevInfoReqHandler success count 3
+01-01 00:44:52.056 D/smtios  (   66): onGetDevInfoReqHandler index 1,pop 0, reqType 0 total 3 namelen 5,name ixr10
+01-01 00:44:52.056 D/smtios  (   66): ****getServiceReplier****
+01-01 00:44:52.056 D/smtios  (   66): onGetDevInfoReqHandler index 2,pop 0, reqType 0 total 3 namelen 19,name 朱海明的 iPhone
+01-01 00:44:52.056 D/smtios  (   66): ****getServiceReplier****
+01-01 00:44:52.056 D/smtios  (   66): onGetDevInfoReqHandler index 3,pop 0, reqType 0 total 3 namelen 6,name iPhone
+01-01 00:44:52.056 D/smtios  (   66): ****getServiceReplier****
+=============================================endl==================================================
+
+
+
+===========================================click device  list option=====================
+01-01 00:46:31.056 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:46:31.056 D/smtios  (   66): onSetPopStatusReqHandler setType 1 index 3 pop 1
+01-01 00:46:31.056 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 1,index 3, setting 1
+01-01 00:46:31.056 D/smtios  (   66): line 1668,manu set
+01-01 00:46:31.056 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:46:31.056 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:46:31.056 D/smtios  (   66): update success
+01-01 00:46:31.060 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:46:31.060 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:46:31.060 D/smtios  (   66): ****getServiceReplier****
+=====================================chandeged form webnlink to carplay====================================
+
+
+
+ 
+========================================click device list option  ipone==========================================
+01-01 00:47:32.276 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:47:32.276 D/smtios  (   66): onSetPopStatusReqHandler setType 1 index 3 pop 2
+01-01 00:47:32.276 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 1,index 3, setting 2
+01-01 00:47:32.276 D/smtios  (   66): line 1668,manu set
+01-01 00:47:32.280 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:47:32.280 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:47:32.280 D/smtios  (   66): update success
+01-01 00:47:32.288 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:47:32.288 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:47:32.288 D/smtios  (   66): ****getServiceReplier****
+==========================================changed form carplay to weblink ===============================
+
+
+==========================================click device list   =====================================
+01-01 00:48:20.684 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:48:20.684 D/smtios  (   66): onSetPopStatusReqHandler setType 1 index 2 pop 2
+01-01 00:48:20.684 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 1,index 2, setting 2
+01-01 00:48:20.684 D/smtios  (   66): line 1668,manu set
+01-01 00:48:20.684 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:48:20.684 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:48:20.684 D/smtios  (   66): update success
+01-01 00:48:20.692 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:48:20.692 D/smtios  (   66): after set pop status,return index is 2
+01-01 00:48:20.692 D/smtios  (   66): ****getServiceReplier****
+=================================chaged form carplay to weblink====================================================
+
+
+
+
+
+
+===========================================test click============================
+01-01 00:49:56.996 D/smtios  (   66): get dev info,req->id 3
+01-01 00:49:56.996 D/smtios  (   66): SmartIosServiceManager::onGetDevInfoReqHandler index 1 reqType 0
+01-01 00:49:56.996 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:49:56.996 D/smtios  (   66): get table success
+01-01 00:49:56.996 D/smtios  (   66): nrow 3,ncol 6
+01-01 00:49:56.996 D/smtios  (   66): seirnum 0000802000162DCC362A002E,priority 1,popStatus 1,devname ixr10
+01-01 00:49:56.996 D/smtios  (   66): seirnum 6d57c7f6cf582dd6208a53925ea23e159d7952ef,priority 2,popStatus 2,devname 朱海明的 iPhone
+01-01 00:49:56.996 D/smtios  (   66): seirnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,priority 3,popStatus 2,devname iPhone
+01-01 00:49:56.996 D/smtios  (   66): onGetDevInfoReqHandler success
+01-01 00:49:56.996 D/smtios  (   66): onGetDevInfoReqHandler success count 3
+01-01 00:49:56.996 D/smtios  (   66): onGetDevInfoReqHandler index 1,pop 0, reqType 0 total 3 namelen 5,name ixr10
+01-01 00:49:56.996 D/smtios  (   66): ****getServiceReplier****
+01-01 00:49:57.000 D/smtios  (   66): onGetDevInfoReqHandler index 2,pop 0, reqType 0 total 3 namelen 19,name 朱海明的 iPhone
+01-01 00:49:57.000 D/smtios  (   66): ****getServiceReplier****
+01-01 00:49:57.000 D/smtios  (   66): onGetDevInfoReqHandler index 3,pop 0, reqType 0 total 3 namelen 6,name iPhone
+01-01 00:49:57.000 D/smtios  (   66): ****getServiceReplier****
+01-01 00:50:01.852 D/smtios  (   66): SmartIosManagerHandler::onSetPopStatusReqHandler
+01-01 00:50:01.852 D/smtios  (   66): onSetPopStatusReqHandler setType 1 index 3 pop 1
+01-01 00:50:01.852 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 1,index 3, setting 1
+01-01 00:50:01.852 D/smtios  (   66): line 1668,manu set
+01-01 00:50:01.852 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:01.856 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:01.856 D/smtios  (   66): update success
+01-01 00:50:01.860 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:01.860 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:50:01.860 D/smtios  (   66): ****getServiceReplier****
+[  689.422855] USB suspend. 7
+[  689.425561] panasonic_irq.. state CONFIGURED c212d000
+[  689.430608] iap2_complete -
+[  689.433389] panasonic_irq call iap2_complete out. 2
+[  689.438258] iap2_complete -
+[  689.441116] usb_gadget_state_work: state change: configured -> suspended
+[  689.448438] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 2
+01-01 00:50:14.736 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2Extract,line 177,notify_iap2Extract
+01-01 00:50:14.740 D/smtios  (   66): SmartIosManagerHandler::onIapExactHandler
+01-01 00:50:14.740 D/smtios  (   66): ****getServiceStub****
+[  689.908821] [g_carlife] module exit START
+[  689.913524] portnum=0 portsc baseaddr=6c00a184
+[  689.918647] [iap2] iap2_unbind OK
+[  689.923068] [eap] eap_unbind OK
+[  689.931346] [uac2] uac2_unbind_config OK
+[  689.935679] [g_carlife] module exit OK
+[  690.441194] [usb-vbus] VBUS RESET start
+[  691.148951] [usb-vbus] in B+/ACC OFF, set USB_EN high, rw32 = 0x3030,rw32_acc = 0xbef70000
+[  691.157259] [usb-vbus] VBUS RESET end
+[  696.432986] usb 1-1: new high-speed USB device number 4 using panasonic-ehci
+[  696.571413] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[  696.577829] [usb_state_clean]: set usb state ->USB_STATE_NOTATTACHED
+[  696.586472] Set charge current 1000 mA OK!
+[  696.606496] hid-generic 0003:05AC:12A8.0003: hiddev0,hidraw0: USB HID v1.11 Device [Apple Inc. iPhone] on usb-panasonic-ehci.0-1/input2
+[  696.947872] XXX: usbhid_xxx rcv call        1
+01-01 00:50:22.124 D/smtios  (   66): notify_iap2Insert,isCarplaySupp 1
+01-01 00:50:22.124 D/smtios  (   66): onIapDeviceInsert serialNumber ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:50:22.124 D/smtios  (   66): onIapDeviceInsert isCarplaySupp 1
+01-01 00:50:22.124 D/smtios  (   66): SmartIosManagerHandler::onIapDeviceInsertHandler
+01-01 00:50:22.124 D/smtios  (   66): serial number is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c   length is 40
+01-01 00:50:22.124 D/smtios  (   66): isCarplaySupp 1
+01-01 00:50:22.124 D/smtios  (   66): iapDeviceInsert, device serialNum is ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c
+01-01 00:50:22.124 D/smtios  (   66): use sqlite3 db
+01-01 00:50:22.128 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:22.128 D/smtios  (   66): reusltCount = 1
+01-01 00:50:22.128 D/smtios  (   66): the device is pop device
+01-01 00:50:22.128 D/smtios  (   66): priority 3,popStatus 1,devnmae iPhone
+01-01 00:50:2[  697.040262] usb 1-1: USB disconnect, device number 4
+2.128 D/smtios  (   66): line 621,index 3,popStatus 1
+01-01 00:50:22.128 D/smtios  (   66): ****getServiceStub****
+01-01 00:50:22.132 D/smtios[  697.057861] using random self ethernet address
+  (   66[  697.062673] using random host ethernet address
+): SmartIosManagerHandle[  697.069758] usb0: HOST MAC b2:2c:26:07:06:46
+r::onSetPopStatu[  697.075294] usb0: MAC da:8d:e4:f2:d1:c5
+sReqHandler
+01-[  697.080385] g_carplay gadget: CarPlay Gadget
+01 00:50[  697.085205] g_carplay gadget: g_carplay ready
+:22.132 [  697.090260] portnum=0 portsc baseaddr=6c00a184
+D/smtios  (   66): onSetPopStatusReqHandler setT[  697.098800] USB suspend. -1
+ype 0 in[  697.102404] usb_gadget_state_work: state change: not attached -> suspended
+dex 3 pop 1
+01-01 00:50:22.132 D/smtios  (   66): SmartIosSettingProxy setPopStatusReq setType = 0,index 3, setting 1
+01-01 00:50:22.132 D/smtios  (   66): line 1442,pop set
+01-01 00:50:22.132 D/smtios  (   66): use sqlite3 db
+01-01 00:50:22.132 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:22.136 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:22.136 D/smtios  (   66): update pop value success,index 3,popValue 1
+01-01 00:50:22.140 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:22.140 D/smtios  (   66): after set pop status,return index is 3
+01-01 00:50:22.140 D/smtios  (   66): ****getServiceReplier****
+01-01 00:50:22.144 D/smtios  (   66): SmartIosManagerHandler::onLaunchSourceReqHandler
+01-01 00:50:22.144 D/smtios  (   66): onLaunchSourceReqHandler index 3 source 0
+01-01 00:50:22.144 D/smtios  (   66): current launch state is 0
+01-01 00:50:22.144 D/smtios  (   66): launchIosSourceReq req source 0
+01-01 00:50:22.144 D/smtios  (   66): launchIosSourceReq real source 2
+[  697.327447] g_carplay gadget: high-speed config #1: CarPlay
+[  697.333143] usb_gadget_state_work: state change: suspended -> configured
+[  697.340593] [gadget_ctl] in char_dev_read, line 115, gadget_ctrl = 1
+01-01 00:50:23.160 D/smtios  (   66): frameworks/service/smartphoneservice/src/SmartIosConnManagerProxy.cpp::notify_iap2AuthInfo,line 209,serialnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devname iPhone
+01-01 00:50:23.160 D/smtios  (   66): ###################frameworks/service/smartphoneservice/src/SmartIosServiceStub.cpp::onIap2AuthInfo,line 151
+01-01 00:50:23.160 D/smtios  (   66): serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:50:23.160 D/smtios  (   66): line 223,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devName iPhone
+01-01 00:50:23.160 D/smtios  (   66): SmartIosManagerHandler::onDevAutoInfoHandler
+01-01 00:50:23.160 D/smtios  (   66): onDevAutoInfoHandler,devinfo.serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,devinfo.devname iPhone
+01-01 00:50:23.160 D/smtios  (   66): SmartIosSettingProxy::setDeviceName,serinum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c length 40,devname iPhone length 6
+01-01 00:50:23.164 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:23.164 D/smtios  (   66): the device is pop device
+01-01 00:50:23.164 D/smtios  (   66): name.format.deviceName iPhone length 6
+01-01 00:50:23.164 D/smtios  (   66): the devname is same,not need update
+01-01 00:50:23.164 D/smtios  (   66): mid 3
+01-01 00:50:23.164 D/smtios  (   66): after get devname,need get dev info,nofity UI
+01-01 00:50:23.164 D/smtios  (   66): get dev info,req->id 3
+01-01 00:50:23.164 D/smtios  (   66): SmartIosServiceManager::onGetDevInfoReqHandler index 0 reqType 0
+01-01 00:50:23.164 D/smtios  (   66): SmartIosSettingProxy::dbOperateRetJudgement, ret = 0
+01-01 00:50:23.164 D/smtios  (   66): get table success
+01-01 00:50:23.164 D/smtios  (   66): nrow 3,ncol 6
+01-01 00:50:23.164 D/smtios  (   66): seirnum 0000802000162DCC362A002E,priority 1,popStatus 1,devname ixr10
+01-01 00:50:23.164 D/smtios  (   66): seirnum 6d57c7f6cf582dd6208a53925ea23e159d7952ef,priority 2,popStatus 2,devname 朱海明的 iPhone
+01-01 00:50:23.164 D/smtios  (   66): seirnum ec2a9e8641819d55e73775cf7b21bdb4bd89ab2c,priority 3,popStatus 1,devname iPhone
+01-01 00:50:23.164 D/smtios  (   66): onGetDevInfoReqHandler success
+01-01 00:50:23.164 D/smtios  (   66): onGetDevInfoReqHandler success count 3
+01-01 00:50:23.164 D/smtios  (   66): onGetDevInfoReqHandler index 1,pop 0, reqType 0 total 3 namelen 5,name ixr10
+01-01 00:50:23.164 D/smtios  (   66): ****getServiceReplier****
+01-01 00:50:23.164 D/smtios  (   66): onGetDevInfoReqHandler index 2,pop 0, reqType 0 total 3 namelen 19,name 朱海明的 iPhone
+01-01 00:50:23.164 D/smtios  (   66): ****getServiceReplier****
+01-01 00:50:23.164 D/smtios  (   66): onGetDevInfoReqHandler index 3,pop 0, reqType 0 total 3 namelen 6,name iPhone
+01-01 00:50:23.164 D/smtios  (   66): ****getServiceReplier****
+[  700.606885] [INFO ][CNM_VPU_DRV][F:vpu_open-L:783][VPUDRV] vpu_open
+[  700.618631] [INFO ][CNM_VPU_DRV][F:vpu_open-L:783][VPUDRV] vpu_open
