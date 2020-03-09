@@ -1,0 +1,34 @@
+android 
+
+	1 Flutter 、大前端
+		谷歌的移动UI框架
+	
+	2 Android Automotive OS
+	
+	3 Android Auto
+		一款类似于carplay的车机手机互联的app
+		
+	4 谷歌开发的Android Automotive OS将于2020年导入沃尔沃汽车的车型，雷诺-日产-三菱和通用将于2021年导入
+	 全球首次采用Android Automotive OS的沃尔沃汽车Polestar 2（出处：沃尔沃汽车）
+	 https://blog.csdn.net/tklwj/article/details/90755797
+	 https://baijiahao.baidu.com/s?id=1632958325182553279&wfr=spider&for=pc
+	 http://www.sohu.com/a/312129697_506163
+	 
+	5 makelines
+	
+	6 电子发烧友    高工智能汽车
+	 http://m.elecfans.com/article/879656.html
+	 
+	7 Kotlin
+		Kotlin 是一个用于现代多平台应用的静态编程语言，由 JetBrains 开发。Kotlin可以编译成Java字节码，
+		也可以编译成JavaScript，方便在没有JVM的设备上运行
+		
+	8 android 底层开发
+		书籍 android底层揭秘 已购买
+	
+	9 区块链
+		PyCharm
+		联盟链框架：Hyperledger Fabric
+		
+		
+		

@@ -1,0 +1,318 @@
+STL 六大组件
+
+	容器
+		各种数据结构
+		Vector 
+		list
+		deque
+		set
+		map
+		容器是一种class Template
+	算法
+		sort
+		find
+		copy
+		for_each 
+		是一种function template
+	迭代器
+		容器与算法之间的粘合剂
+		每种容器都有自己的迭代器
+		operator* , operator-> , operator++,operator等指针操作相关
+		原生指针也是一种迭代器
+		
+	仿函数	
+		类似函数
+		可作为算法的某种策略
+		实现角度，是一种重载了oprator（）的class 或者classTemplate
+	适配器
+		修饰容器或者仿函数或迭代器接口
+	空间配置器
+		空间的配置与管理
+		
+	六大组件的关系
+		相互交互
+		容器通过空间配置器取得数据存储空间
+		算法通过迭代器存储容器中的内容
+		仿函数可以协助算法完成不同的策略的变化
+		适配器可以修饰仿函数
+		
+容器
+	分为
+		序列式容器
+			强调值的排序
+			固定位置
+			线性存储
+			list 、vector、deque...
+		关联式容器
+			非线性、二叉树结构
+			元素没有逻辑顺序
+			key/value形式
+			set/map。。。。
+		
+	常用容器
+		string
+			头文件 #inlude<string>
+			与char *区别
+				char* 为指针，string为类，string中封装了char* 
+				string中封装了成员方法
+				不用考虑内存释放和越界
+		
+			常用函数
+				构造函数
+					string();//创建一个空的字符串 例如: string str;      
+					string(const string& str);//使用一个string对象初始化另一个string对象
+					string(const char* s);//使用字符串s初始化
+					string(int n, char c);//使用n个字符c初始化 
+				基本赋值
+					string& operator=(const char* s);//char*类型字符串 赋值给当前的字符串
+					string& operator=(const string &s);//把字符串s赋给当前的字符串
+					string& operator=(char c);//字符赋值给当前的字符串
+					string& assign(const char *s);//把字符串s赋给当前的字符串
+					string& assign(const char *s, int n);//把字符串s的前n个字符赋给当前的字符串
+					string& assign(const string &s);//把字符串s赋给当前字符串
+					string& assign(int n, char c);//用n个字符c赋给当前字符串
+					string& assign(const string &s, int start, int n);//将s从start开始n个字符赋值给字符串
+
+				存取字符
+					char& operator[](int n);//通过[]方式取字符
+					char& at(int n);//通过at方法获取字符
+
+				string拼接
+					string& operator+=(const string& str);//重载+=操作符
+					string& operator+=(const char* str);//重载+=操作符
+					string& operator+=(const char c);//重载+=操作符
+					string& append(const char *s);//把字符串s连接到当前字符串结尾
+					string& append(const char *s, int n);//把字符串s的前n个字符连接到当前字符串结尾
+					string& append(const string &s);//同operator+=()
+					string& append(const string &s, int pos, int n);//把字符串s中从pos开始的n个字符连接到当前字符串结尾
+					string& append(int n, char c);//在当前字符串结尾添加n个字符c
+
+				查找替换
+					int find(const string& str, int pos = 0) const; //查找str第一次出现位置,从pos开始查找
+					int find(const char* s, int pos = 0) const;  //查找s第一次出现位置,从pos开始查找
+					int find(const char* s, int pos, int n) const;  //从pos位置查找s的前n个字符第一次位置
+					int find(const char c, int pos = 0) const;  //查找字符c第一次出现位置
+					int rfind(const string& str, int pos = npos) const;//查找str最后一次位置,从pos开始查找
+					int rfind(const char* s, int pos = npos) const;//查找s最后一次出现位置,从pos开始查找
+					int rfind(const char* s, int pos, int n) const;//从pos查找s的前n个字符最后一次位置
+					int rfind(const char c, int pos = 0) const; //查找字符c最后一次出现位置
+					string& replace(int pos, int n, const string& str); //替换从pos开始n个字符为字符串str
+					string& replace(int pos, int n, const char* s); //替换从pos开始的n个字符为字符串s
+
+				比较
+					/*
+					compare函数在>时返回 1，<时返回 -1，==时返回 0。
+					比较区分大小写，比较时参考字典顺序，排越前面的越小。
+					大写的A比小写的a小。
+					*/
+					int compare(const string &s) const;//与字符串s比较
+					int compare(const char *s) const;//与字符串s比较
+
+				子串
+					string substr(int pos = 0, int n = npos) const;//返回由pos开始的n个字符组成的字符串
+					
+				插入、删除
+					string& insert(int pos, const char* s); //插入字符串
+					string& insert(int pos, const string& str); //插入字符串
+					string& insert(int pos, int n, char c);//在指定位置插入n个字符c
+					string& erase(int pos, int n = npos);//删除从Pos开始的n个字符 
+
+				string和c-style字符串转换
+					//string 转 char*
+					string str = "itcast";
+					const char* cstr = str.c_str();
+					//char* 转 string 
+					char* s = "itcast";
+					string str(s);
+
+			提示
+				c++中存在一个从const char*到string的隐式类型转换
+				不存在从一个string对象到C_string的自动类型转换
+				可以通过c_str()函数返回string对象对应的C_string.
+				
+			   为了修改string字符串的内容，下标操作符[]和at都会返回字符的引用。
+			   但当字符串的内存被重新分配之后，可能发生错误.
+		
+		
+		
+		vector 
+			包含头文件
+				#include<vector>
+			线性结构
+			连续空间
+			动态扩容
+			两个迭代器 _Myfirst _Myend ,_Myend指向vector末尾
+			
+			常用API
+				 构造函数
+					vector<T> v; //采用模板实现类实现，默认构造函数
+					vector(v.begin(), v.end());//将v[begin(), end())区间中的元素拷贝给本身。
+					vector(n, elem);//构造函数将n个elem拷贝给本身。
+					vector(const vector &vec);//拷贝构造函数。
+				赋值操作
+					assign(beg, end);//将[beg, end)区间中的数据拷贝赋值给本身。
+					assign(n, elem);//将n个elem拷贝赋值给本身。
+					vector& operator=(const vector  &vec);//重载等号操作符
+					swap(vec);// 将vec与本身的元素互换。
+					
+				大小操作
+					size();//返回容器中元素的个数
+					empty();//判断容器是否为空
+					resize(int num);//重新指定容器的长度为num，若容器变长，则以默认值填充新位置。如果容器变短，
+										则末尾超出容器长度的元素被删除。
+					resize(int num, elem);//重新指定容器的长度为num，若容器变长，则以elem值填充新位置。如果容器变短，
+											则末尾超出容器长>度的元素被删除。
+					capacity();//容器的容量
+					reserve(int len);//容器预留len个元素长度，预留位置不初始化，元素不可访问
+				
+				数据存取操作
+					at(int idx); //返回索引idx所指的数据，如果idx越界，抛出out_of_range异常。
+					operator[];//返回索引idx所指的数据，越界时，运行直接报错
+					front();//返回容器中第一个数据元素
+					back();//返回容器中最后一个数据元素
+
+				插入和删除操作
+					at(int idx); //返回索引idx所指的数据，如果idx越界，抛出out_of_range异常。
+					operator[];//返回索引idx所指的数据，越界时，运行直接报错
+					front();//返回容器中第一个数据元素
+					back();//返回容器中最后一个数据元素
+					insert(const_iterator pos, int count,ele);//迭代器指向位置pos插入count个元素ele.
+					push_back(ele); //尾部插入元素ele
+					pop_back();//删除最后一个元素
+					erase(const_iterator start, const_iterator end);//删除迭代器从start到end之间的元素
+					erase(const_iterator pos);//删除迭代器指向的元素
+					clear();//删除容器中所有元素
+
+				reverse预留空间
+						#define _CRT_SECURE_NO_WARNINGS
+						#include<iostream>
+						#include<vector>
+						using namespace std;
+						int main(){
+							vector<int> v;
+							//预先开辟空间
+							v.reserve(100000);
+							int* pStart = NULL;
+							int count = 0;
+							for (int i = 0; i < 100000;i ++){
+								v.push_back(i);
+								if (pStart != &v[0]){
+									pStart = &v[0];
+									count++;
+								}
+							}
+							cout << "count:" << count << endl;
+							system("pause");
+							return EXIT_SUCCESS;
+						}
+			
+			注意：	
+				vector动态分配空间，如果内存块不够，则在其他内存处开辟新的空间
+				将原来的内存释放。
+				空间重置后，原来指向vector的迭代器失效
+		
+		
+		deque
+			包含头文件	
+				#includde<deque	>
+			队列，先进先出
+			无迭代器，无遍历功能
+			
+			常用API
+				构造函数
+					queue<T> queT;//queue采用模板类实现，queue对象的默认构造形式：
+					queue(const queue &que);//拷贝构造函数
+				
+				存取、插入和删除操作
+					push(elem);//往队尾添加元素
+					pop();//从队头移除第一个元素
+					back();//返回最后一个元素
+					front();//返回第一个元素
+
+				赋值操作
+					queue& operator=(const queue &que);//重载等号操作符
+				大小操作
+					empty();//判断队列是否为空
+					size();//返回队列的大小
+
+		List
+			链表 、双向循环
+			非连续 、非顺序
+			通过链表指针链接次序
+			每次插入删除操作，都增加或者释放内存
+			灵活
+			不浪费内存
+			
+			迭代器
+				Bidirectional Iterators.
+				插入删除都不会造成迭代器失效
+				list中元素被删除，只是该元素迭代器失效，
+				其他元素的迭代器不失效
+			
+			常用API
+				构造函数
+					list<T> lstT;//list采用采用模板类实现,对象的默认构造形式：
+					list(beg,end);//构造函数将[beg, end)区间中的元素拷贝给本身。
+					list(n,elem);//构造函数将n个elem拷贝给本身。
+					list(const list &lst);//拷贝构造函数。
+
+				元素插入和删除操作
+					push_back(elem);//在容器尾部加入一个元素
+					pop_back();//删除容器中最后一个元素
+					push_front(elem);//在容器开头插入一个元素
+					pop_front();//从容器开头移除第一个元素
+					insert(pos,elem);//在pos位置插elem元素的拷贝，返回新数据的位置。
+					insert(pos,n,elem);//在pos位置插入n个elem数据，无返回值。
+					insert(pos,beg,end);//在pos位置插入[beg,end)区间的数据，无返回值。
+					clear();//移除容器的所有数据
+					erase(beg,end);//删除[beg,end)区间的数据，返回下一个数据的位置。
+					erase(pos);//删除pos位置的数据，返回下一个数据的位置。
+					remove(elem);//删除容器中所有与elem值匹配的元素。
+
+				大小操作
+					size();//返回容器中元素的个数
+					empty();//判断容器是否为空
+					resize(num);//重新指定容器的长度为num，
+					若容器变长，则以默认值填充新位置。
+					如果容器变短，则末尾超出容器长度的元素被删除。
+					resize(num, elem);//重新指定容器的长度为num，
+					若容器变长，则以elem值填充新位置。
+					如果容器变短，则末尾超出容器长度的元素被删除。
+				
+				
+				赋值操作
+					assign(beg, end);//将[beg, end)区间中的数据拷贝赋值给本身。
+					assign(n, elem);//将n个elem拷贝赋值给本身。
+					list& operator=(const list &lst);//重载等号操作符
+					swap(lst);//将lst与本身的元素互换。
+
+		
+				数据的存取
+					front();//返回第一个元素。
+					back();//返回最后一个元素。
+				反转排序
+					reverse();//反转链表，比如lst包含1,3,5元素，运行此方法后，lst就包含5,3,1元素。
+					sort(); //list排序
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		

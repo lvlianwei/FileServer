@@ -26,3 +26,8 @@
 5 执行git push origin singleBranch : singleBranch命令时，提示error: dst ref refs/heads/singleBranch receives from more than one src.错误
 	命令参数问题
 	在git push origin singleBranch : singleBranch命令中，多打了两个空格。
+	
+6 Git错误fatal: CRLF would be replaced by LF in xxx
+	在windows上编写的Linux的代码，在git add .时会报以上错误。
+	解决方案：
+		在linux上编写代码

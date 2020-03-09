@@ -1,0 +1,14 @@
+
+在Android中，智能指针包括轻量指针、强指针、弱指针.
+在Android系统里，主要存在三种职能指针轻量级指针(LightRefBase)，强指针(sp), 弱指针(wp). 
+这部分涉及的代码裂变如下： 
+(1)	RefBase.h	位于：/frameworks/native/include/RefBase.h 
+(2) RefBash.cpp	位于: /frameworks/native/libs/RefBase.cpp 
+(3) StrongPointer.h	位于：/frameworks/native/include/StrongPointer.h 
+
+
+智能指针是C++中的一个概念，通过基于引用计数的方法，解决对象的自动释放的问题
+
+	1智能指针是一个包装类，该类有一个指针指向真正的类对象
+	2引用计数型智能指针，该引用计数是在应该被真正类所持有，而非包装类（智能指针）
+    3为了方便，会将引用计数单独实现在一个类中，这样所有继承它的类都有计数器RefBase.h

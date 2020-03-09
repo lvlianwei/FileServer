@@ -1,3 +1,6 @@
 https://blog.csdn.net/qq_37808895/article/details/90736386#SpringBoot_2
 
 https://www.cnblogs.com/awzf/p/9953216.html#_label0
+
+在idea中搭建springboot项目
+https://blog.csdn.net/yang_guang3/article/details/99689777
