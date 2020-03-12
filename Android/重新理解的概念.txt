@@ -1,0 +1,20 @@
+
+服务注册,往哪里注册，怎么注册
+ 
+服务通信ibander 
+
+服务框架 
+		
+java系统服务 由systemServer 系统进程启动，，，systemServer，这又是啥？？
+media server /system server   系统服务中的服务器的概念？
+
+android中提供的系统服务，是每个服务是单独的一个进程，还是服务都在一个进程中，每个服务都是该进程得一个线程？
+
+LocalManager 对象：与各个服务通信。
+
+应用程序、服务、sdk ndk 服务框架 
+
+
+已解决
+1 服务
+	本地服务、远程服务、系统服务、应用程序服务、
