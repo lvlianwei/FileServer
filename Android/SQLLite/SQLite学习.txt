@@ -1,0 +1,49 @@
+1.SQLite简介
+	SQLite是一款轻型的数据库，，它的设计目标是嵌入式的
+	它能够支持 Windows/Linux/Unix等等主流的操作系统，同时能够跟很多程序语言相结合，
+ 
+2 安装和使用
+	linux下安装
+		下载地址：	https://www.sqlite.org/download.html
+		下载linux对应的版本，.tar.gz文件
+		安装：
+			$ tar xvzf sqlite-autoconf-3071502.tar.gz
+			$ cd sqlite-autoconf-3071502
+			$ ./configure --prefix=/usr/local
+			$ make
+			$sudo make install
+	使用
+		1 语法和sql语句的语法一致，这里不再详细赘述。
+			create
+			delete
+			drop
+			...
+		2 在sqlite与c/C++语言结合过程中
+			提供了专门的接口
+			sqlite3_open（）
+			sqlite3_close()
+			....
+			
+3 系统表sqlite_master
+		每一个 SQLite 数据库都有一个叫 SQLITE_MASTER 的表， 它定义数据库的模式。SQLITE_MASTER 表是只读的。不能对它使用 UPDATE、INSERT 或 DELETE。
+		在sqlite_master 表上执行一个SELECT查询以获得所有表的索引
+		表字段
+			CREATE TABLE sqlite_master ( 
+			type TEXT, 
+			name TEXT, 
+			tbl_name TEXT, 
+			rootpage INTEGER, 
+			sql TEXT 
+			); 
+			type 字段永远是 ‘table’，name 字段永远是表的名字
+		查询表名为popDevices的表
+		select * from sqlite_master where type = 'table' and name = 'popDevices'
+		
+4 sqlcipher
+	sql加密
+	
+===========================================================================================================
+============================================================================================================
+遇到问题
+	1 sqlite解决不能退出...>的方法
+		输入；即可退出
