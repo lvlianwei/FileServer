@@ -2,6 +2,7 @@
 环境：ubuntu16.04
 硬件要求：硬盘空间100G以上吧
 
+下载：
 1 下载repo工具（如果没有安装过repo的话）
 	下载
 		curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo -o repo
