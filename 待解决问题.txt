@@ -1,0 +1,120 @@
+
+ 1 android 源码中的prebuild文件夹是干啥的——————延期2（10/18）
+
+
+ 2  android MediaPlayer  ----延期（10/21）
+
+ 3 在serviceBase中，onAsyncRequest方法中，接收proxy发送的请求，下面代码中的GMTaskDes，在新的线程中传入定义的task ---- 延期（10/21）
+	这一块不是很理解
+      case USBMethod_Play:
+        {
+            // define request param
+            // unpack request param
+            // call request function
+            // play(id);
+            GMTaskDes des(Runnable_Pri_N, 0, "USBMethod_Play");
+            (m_pMainThread->looper()).postRunnable(GMTaskBind(des, this, &GMUsbServiceBase::play, id));
+            break;
+        }
+ 4 usb Timer 中的timer作用，及大概实现逻辑
+ 
+
+ 5 next方法逻辑解析，USbDevicePlayer 的postNext方法中，有个stopTimer方法，这里不太理解，稍后解析。
+	这个timer是干啥的？
+  
+	
+6 access()函数用法
+access()：判断是否具有存取文件的权限
+
+7 linux中的虚拟地址问题？
+
+8 android中surface flinger问题
+
+9 
+
+10 
+
+			
+11  c++ 中怎么使用第三方的封装好的库
+	
+12 在playlistInfo文件中的next方法参数中forceSequence参数作用。
+	forceSequence bool值，在.h文件中的方法定义处付了初值1
+
+13 插入U盘的逻辑中connectManager层和usbService两层中间传递消息的类StorageInfo中的信息
+	mountPath 挂载路径
+	volumeLabel 卷标签
+	isLastOn
+	usbSts
+	usbInfo类
+		// Vendor ID
+		android::String8 vid;
+	    // Product ID
+		android::String8 pid;
+		// Manufacturer Name（制造商name）
+		android::String8 manufacturer;
+		// Serial Number
+		android::String8 serialNum
+		// USB Port ID
+		int32_t port;
+		// The device id of USB Device
+		int32_t deviceId;
+		bool unsupportDevice;
+		
+14 bzero和memset函数
+	https://blog.csdn.net/weixin_42235488/article/details/80589583
+	待整理。
+	
+15 Uri UriMatch ContentValues 这几个类的作用
+contentValues 作用和HashMap类似，用来存放键值对数据，在sqlite数据库的insert方法中，使用contentValues对象作为方法参数
+	 
+	 
+16 电子货币、虚拟货币、数字货币三者的区别和联系。
+		
+17 在usbService中GMUsbDevicePlayer文件中的playStatusChanged方法参数中的mask是干啥的？
+
+18 Easy-mock ？？
+		
+19 循环者（Looper） MessageQueue  Message  
+一个线程对应一个Looperduix .一个Looper对象对应一个MessageQueue。
+MessageQueue用来存放Message
+
+looper对象用来为一个线程开启一个消息巡航，从而操作MessageQueue
+		
+20 linux GRUB启动引导程序。		
+
+21 handler消息处理机制								
+android 的消息处理机制
+对于一些比较耗时的操作，通常会为其开辟一个单独的线程来执行，以尽可能减少用户的等待时间。
+在Android中，默认情况下，所有的操作都在主线程中进行，主线程负责管理与UI相关的事件，而在用户自己创建的子线程中，不能对UI组件进行操作。
+为了让主线程和子线程间传递数据，使用了handler消息传递机制。Handler不仅仅能将子线程的数据传递给主线程，它能实现任意两个线程的数据传递。
+		
+22 c++版本
+
+23 c++中的多线程
+
+24 在C++中多线程问题。怎么执行。。。
+	项目中没整明白，只知道在platform 层定义了一个NCThread类基类。
+	待解决。。。
+
+25 android中的JNI使用和原理。
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+ 
+ 
+
+	
