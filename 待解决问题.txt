@@ -30,10 +30,18 @@ access()：判断是否具有存取文件的权限
 
 8 android中surface flinger问题
 
-9 
+9  智能指针
+	android中的智能指针。强指针、弱指针
+	
+	c++标准库中的智能指针 四种
+		auto_ptr
+		https://blog.csdn.net/zsc_976529378/article/details/52250597
+		
 
-10 
 
+10 c++中对文件的操作
+ http://www.codeceo.com/article/cpp-file-operate.html
+		
 			
 11  c++ 中怎么使用第三方的封装好的库
 	
