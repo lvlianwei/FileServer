@@ -1,5 +1,5 @@
 
- 1 android 源码中的prebuild文件夹是干啥的——————延期2（10/18）
+ 1 
 
 
  2  android MediaPlayer  ----延期（10/21）
@@ -23,8 +23,7 @@
 	这个timer是干啥的？
   
 	
-6 access()函数用法
-access()：判断是否具有存取文件的权限
+6
 
 7 linux中的虚拟地址问题？
 
@@ -68,15 +67,13 @@ access()：判断是否具有存取文件的权限
 		int32_t deviceId;
 		bool unsupportDevice;
 		
-14 bzero和memset函数
-	https://blog.csdn.net/weixin_42235488/article/details/80589583
-	待整理。
-	
+14 
+
 15 Uri UriMatch ContentValues 这几个类的作用
 contentValues 作用和HashMap类似，用来存放键值对数据，在sqlite数据库的insert方法中，使用contentValues对象作为方法参数
 	 
 	 
-16 电子货币、虚拟货币、数字货币三者的区别和联系。
+16 
 		
 17 在usbService中GMUsbDevicePlayer文件中的playStatusChanged方法参数中的mask是干啥的？
 
