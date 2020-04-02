@@ -1,0 +1,26 @@
+1 在.vscode文件夹下的三个文件的作用和配置
+1）tasks.json
+	作用：告诉vscode如何编译。该任务将调用g ++编译器以基于源代码创建可执行文件
+	文件格式：
+		{
+		"version": "2.0.0",
+		"tasks": [
+		  {
+			"type": "shell",
+			"label": "g++.exe build active file",
+			"command": "D:\\MinGW\\bin\\g++.exe",   //g++的安装目录（在mingw/bin下）
+			//"args": ["-g", "${file}", "-o", "${fileDirname}\\${fileBasenameNoExtension}.exe"], //编译时的参数和参与编译的文件以及编译成果物
+			"args": ["-g", "${file}", "-o", "${workspaceFolder}\\${fileBasenameNoExtension}.exe"], //编译时的参数和编译所有文件
+			"options": {
+			  "cwd": "D:\\MinGW\\bin"
+			},
+			"problemMatcher": ["$gcc"],
+			"group": {
+			  "kind": "build",
+			  "isDefault": true
+			}
+		  }
+		]
+	  }
+	
+2）launch.json
