@@ -76,13 +76,16 @@
 		int32_t deviceId;
 		bool unsupportDevice;
 		
-14 
+14 vscode 中同步插件Settings Sync的使用
+	vscode中使用、配置c++/python
+	vscode中settings.json文件的配置
+	
 
 15 Uri UriMatch ContentValues 这几个类的作用
 contentValues 作用和HashMap类似，用来存放键值对数据，在sqlite数据库的insert方法中，使用contentValues对象作为方法参数
 	 
 	 
-16 
+16 sqlite 中的PRAGMA以及user_version Pragma
 		
 17 在usbService中GMUsbDevicePlayer文件中的playStatusChanged方法参数中的mask是干啥的？
 
