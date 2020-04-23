@@ -1,7 +1,6 @@
 
  1 c++ 标准是什么？c++ 11 又是啥标准
 
-
  2  android MediaPlayer  ----延期（10/21）
 
  3 在serviceBase中，onAsyncRequest方法中，接收proxy发送的请求，下面代码中的GMTaskDes，在新的线程中传入定义的task ---- 延期（10/21）
@@ -17,6 +16,7 @@
             break;
         }
  4 usb Timer 中的timer作用，及大概实现逻辑
+	timer的只要作用是计时器，在usb播放音乐过程中，需要有播放进度条，这个进度条就是通过timer来控制
  
 
  5 next方法逻辑解析，USbDevicePlayer 的postNext方法中，有个stopTimer方法，这里不太理解，稍后解析。
@@ -134,8 +134,9 @@ https://blog.csdn.net/zz861126/article/details/80408470
 		5. gcc在编译cpp文件时/g++在编译c文件和cpp文件时（这时候gcc和g++调用的都是cpp文件的编译器），会加入一些额外的宏。
 		6.在用gcc编译c++文件时，为了能够使用STL，需要加参数 –lstdc++ ，但这并不代表 gcc –lstdc++ 和 g++等价，它们的区别不仅仅是这个。
 
+28 c++中的符号表
+	符号表是库中所有函数，变量的总称，用于连接过程.
 
-		
 		
 		
 		
