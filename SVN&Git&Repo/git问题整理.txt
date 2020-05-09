@@ -37,3 +37,9 @@
 		1 检查本地.ssh文件夹内的公钥和github中的ssh公钥是否相同
 		2 看本地的.git/config设置的仓库url地址和github使用的链接地址是否一致如下图,如use https,则url需要用https的仓库地址
 		https://segmentfault.com/q/1010000003061640
+		
+8 解决`向github提交代码是老要输入用户名密码`
+	解决方案：https://www.jianshu.com/p/81ae6e77ff47
+	1在命令行输入命令:
+		git config --global credential.helper store
+	2 现在push你的代码 (git push), 这时会让你输入用户名密码, 这一步输入的用户名密码会被记住, 下次再push代码时就不用输入用户名密码啦!
