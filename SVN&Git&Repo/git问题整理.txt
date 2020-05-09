@@ -31,3 +31,9 @@
 	在windows上编写的Linux的代码，在git add .时会报以上错误。
 	解决方案：
 		在linux上编写代码
+		
+7 git 可以pull 但是push 就报无权限错误
+	解决方案：
+		1 检查本地.ssh文件夹内的公钥和github中的ssh公钥是否相同
+		2 看本地的.git/config设置的仓库url地址和github使用的链接地址是否一致如下图,如use https,则url需要用https的仓库地址
+		https://segmentfault.com/q/1010000003061640
