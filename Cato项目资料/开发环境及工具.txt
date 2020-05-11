@@ -1,0 +1,27 @@
+开发工具：
+	mysql5.7
+	Navicat 12.0
+	idea 2019.1.1
+	jdk11
+	gitlib（代码管理）
+	svn（开发资料管理）
+	power designer :设计数据库
+	Maven 3.6
+	腾讯云服务器
+		40G硬盘
+		centos7.7
+		管理员
+			账号：root
+			密码：4HGzIa5XxKW
+			登录地址：https://console.cloud.tencent.com/cvm/instance/index?rid=8
+		开发用户
+			用户名：cato
+			密码：cato
+
+开发框架
+	springboot+mybatis+第三方服务
+
+	
+	 
+	
+	
