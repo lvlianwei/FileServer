@@ -15,4 +15,7 @@
 	国内好的区块链应用开发平台
 	Laikelib
 	Laikelib白皮书 https://max.book118.com/html/2018/0203/151758486.shtm
+	
+PyCharm
+	联盟链框架：Hyperledger Fabric
 
