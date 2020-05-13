@@ -1,0 +1,24 @@
+
+	  looper   Message  MessageQueue
+	
+	MainLooper
+	MessageHandler 
+	
+	process
+	
+	
+	===============================
+	
+	looperThread 
+		MessageHandler
+		looperThreadImpl
+			Thread 
+		
+		
+		
+	RunnableThread
+	
+	
+	
+	**ServiceManager
+	
