@@ -1,13 +1,17 @@
-
+wenlink 
+=====================================
 	  looper   Message  MessageQueue
 	
 	MainLooper
 	MessageHandler 
 	
 	process
+============================================
+
+
 	
-	
-	===============================
+smtPhone
+================================================
 	
 	looperThread 
 		MessageHandler
@@ -18,7 +22,31 @@
 		
 	RunnableThread
 	
-	
-	
 	**ServiceManager
+======================================================
+
+
+
+usbService 
+	==================================
+	GMRunnableThread 
+		NCThread 
+	
+	RunnableLooper :每一个线程都可以产生一个Looper,用来管理线程的Message，Looper对象会建立一个MessgaeQueue数据结构来存放message。
+	RunnableQueue
+		
+	Handler :与Looper沟通的对象，可以push消息或者runnable对象到MessgaeQueue，也可以从MessageQueue得到消息。
+	
+	NCThread   GMRunnableQueueOwner  GMRunnableLooper
+	
+	====================================================
+	pthread_key_t
+	
+	线程存储：
+		现在有一全局变量，所有线程都可以使用它，改变它的值。而如果每个线程希望能单独拥有它，那么就需要使用线程存储了。表面上看起来这是一个全局变量，所有线程都可以使用它，而它的值在每一个线程中又是单独存储的。这就是线程存储的意义。
+
+	线程、Handler、Looper之间关系
+		一个线程可以创建多个Handler，但只能创建一个Looper，一个MessageQueue。Handler跟Looper之间没有对应关系
+
+	
 	
