@@ -32,6 +32,7 @@ usbService
 	GMRunnableThread 
 		NCThread 
 	
+	
 	RunnableLooper :每一个线程都可以产生一个Looper,用来管理线程的Message，Looper对象会建立一个MessgaeQueue数据结构来存放message。
 	RunnableQueue
 		

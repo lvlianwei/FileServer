@@ -20,6 +20,15 @@
 
 开发框架
 	springboot+mybatis+第三方服务
+	
+开发流程
+	1 部署环境
+		idea2019.1.1 
+		maven 3.6
+		mysql5.7(云端)
+		github （创建代码仓库，前后端）
+		前后端本地PC配置git 
+			
 
 	
 	 
