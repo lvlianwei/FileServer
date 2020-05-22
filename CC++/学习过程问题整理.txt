@@ -83,4 +83,9 @@
 		1 检出main函数写的是否有问题
 		2 检查makefile文件写的是否有问题，
 		一般这个问题的出现多数是makefile文件写的问题。
+		
+16 c++中sizeof()、length()、strlen()、size()函数的区别
+	其中strlen(str)和str.length()和str.size()都可以用来求字符串的长度
+	str.length()和str.size()是用于求string类对象的成员函数
+	strlen(str) 是用于求字符串数组的长度，其参数是char*
 
