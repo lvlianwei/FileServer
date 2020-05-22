@@ -29,6 +29,12 @@
 		github （创建代码仓库，前后端）
 		前后端本地PC配置git 
 			
+云数据库（mysql5.7 centos中具体配置请参考github/Linux/centos使用过程中的问题总结）
+	ip:49.233.201.43
+	端口：3306
+	用户名：root
+	密码：Root_123
+
 
 	
 	 
