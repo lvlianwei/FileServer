@@ -137,7 +137,10 @@ https://blog.csdn.net/zz861126/article/details/80408470
 28 c++中的符号表
 	符号表是库中所有函数，变量的总称，用于连接过程.
 
-29 获取多媒体文件信息开源库 tabLib的使用		
+29 获取多媒体文件信息开源库 tabLib的使用	
+
+30 makefile 文件编写
+https://blog.csdn.net/weixin_38391755/article/details/80380786	
 		
 		
 
