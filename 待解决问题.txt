@@ -143,7 +143,7 @@ https://blog.csdn.net/zz861126/article/details/80408470
 https://blog.csdn.net/weixin_38391755/article/details/80380786	
 
 
-31 
+31 c++中内部类的作用，为什么要使用内部类
 
 
 		
