@@ -6,7 +6,7 @@
 	2 
 	3 weblink sdk 与车机的整合思路
 	4 weblink 整体时序（说的明白）
-	5 c++面试题整理，晚上打印
+	5 c++面试题整理，晚上打印  ---已完成70%
 	6
  
 日常：
@@ -16,20 +16,38 @@
 	4）6月工数填写	--已完成
 	5）个人所得税问题 （看公司邮件）（晚上）
 	6）七月份开始记账---已完成
-	7）
+	7）刻意练习
 	8）
 	9）
 	10）
 	
-后延计划
+后延：
 	关于微信视频号相关内容的搜集和思考
 	怎么将自己的白酒想法和微信视频号链接
 	
 Weblink sdk 与车机的整合思路：
 	1)什么是weblink?--用户角度，系统角度
+		用户角度：
+			类似carplay /android auto 的一个实现将智能手机和车机连接在一起的一个应用。
+			具有musicPlyer youtobe waze webBrowser 浏览器 
+			通过usb 线，可以实现上叙述的应用已视频流的形式投影到车机上
+		系统角度：
+			一个实现HU和SmartPhone 之间的连接的一个应用
 	2)weblink怎么整合到车机中，让他成为车机的一个功能
+		sdk --提供给开发者weblink的集成包，手册、step
+		手机侧为server 端、HU侧为client端，在HU侧两个作用：1）显示smartPhone 侧发送过来的 视频流，实现投屏;2)向手机侧发送屏幕坐标
+		需要的其他service: connectManager 、MediaPlayer 、audioService 、iapService、 BTService、inputManager  配合	
 	3）整合的具体步骤
 	4）主要的功能点
+		ios / android weblink的连接
+		ios / android weblink的断开
+		source 切换
+		启动应用
+		走行限制
+		在内置应用中进行一系列操作
+		使用hardHey 、sorftKey 返回Home,和preStep
+		视频流的处理		
+		
 	5）具体每个功能点的实在思路
 	6）常见的问题
 	7）重大的bug及解决思路
