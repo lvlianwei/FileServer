@@ -63,6 +63,9 @@ Weblink sdk 与车机的整合思路：
 	学习路线：http://www.elecfans.com/qichedianzi/623398.html
 	学习路线：https://zhuanlan.zhihu.com/p/94498746?utm_source=wechat_session
 	https://blog.csdn.net/bibijio/article/details/95343458
+自动驾驶介绍相关文章
+	csdn: https://blog.csdn.net/liaojiacai/article/details/55062873
+
 微信视频号
 	1）微信为什么现在突然做出来个视频号？
 	2）相对其他平台，微信的优势在哪里
