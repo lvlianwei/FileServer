@@ -14,14 +14,13 @@
 	2）日报、周报填写		--已完成
 	3）邻居家的百万富翁（晚上）
 	4）区块链金融、南风窗材质购买
-	5）刻意练习书籍挑选、购买
+	5）刻意练习书籍挑选、购买 --已完成
 	6）
 	7）
 	8）
 	9）
 	10）
-	
-	1233 87 
+
 	
 后延：
 	c++ 面试题 10个
@@ -58,6 +57,18 @@ Weblink sdk 与车机的整合思路：
 	6）常见的问题
 	7）重大的bug及解决思路
 	8）
+	
+车联网:
+	tbox
+	车联网组成：主机+tbox+app+后台系统
+	飞驰镁物---车联网公司
+	5G+北斗 为车联网赋能
+	车联网相关文章
+		https://www.zhihu.com/question/34556802/answer/113791287
+		https://m.sohu.com/a/323563467_114986	
+		https://www.sohu.com/a/394389597_120249822
+		https://www.sohu.com/a/286372767_100098859
+		http://news.rfidworld.com.cn/2019_02/29f65430235ee10f.html
 
 自动驾驶相关技术学习
 	学习路线：http://www.elecfans.com/qichedianzi/623398.html
@@ -87,17 +98,6 @@ Weblink sdk 与车机的整合思路：
 	UsbService 模块 时序梳理（说的明白）
 	UsbService 模块 主要功能的实现思路
 	
-车联网:
-	tbox
-	车联网组成：主机+tbox+app+后台系统
-	飞驰镁物---车联网公司
-	5G+北斗 为车联网赋能
-	车联网相关文章
-		https://www.zhihu.com/question/34556802/answer/113791287
-		https://m.sohu.com/a/323563467_114986	
-		https://www.sohu.com/a/394389597_120249822
-		https://www.sohu.com/a/286372767_100098859
-		http://news.rfidworld.com.cn/2019_02/29f65430235ee10f.html
 	 
 2 cato官网开发
 月：
