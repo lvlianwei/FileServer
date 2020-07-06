@@ -41,3 +41,9 @@
 		据获取的信息数据，将做出的决策实时操作
 		自动开车，需要车辆的控制系统与决策系统相配合
 		感知层、信息融合层以及决策规划层其实都是为控制层做铺垫，最终需要做出动作的还是控制层
+===============================================================================
+相关文章
+	学习路线：http://www.elecfans.com/qichedianzi/623398.html
+	学习路线：https://zhuanlan.zhihu.com/p/94498746?utm_source=wechat_session
+	https://blog.csdn.net/bibijio/article/details/95343458
+	csdn: https://blog.csdn.net/liaojiacai/article/details/55062873
