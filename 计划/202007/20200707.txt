@@ -1,21 +1,23 @@
 ====================================
-2020/7/6
+2020/7/7
 ====================================
 工作相关
-	1 安霸视频补标60+ ---已完成 
-	2 usbService 主要时序梳理（50%）
+	1 安霸视频补标车线两个视频
+	2 usbService 主要时序梳理
 	3 weblinkService 模块细节
-	4 C++ 面试题 15个
+	4 C++ 面试题 15个（昨日的顺延到今天）
 	5 周二buf ------已完成 
-	6 
- 
+	6 weblink sdk 升级 
+		1）新版本的sdk 需要HID touch 兼容 苹果 13.4一下系统
+	7 简历内容准备
+	8 面试中可能问到的项目问题准备
 日常：
 	1）日计划制定	--已完成
-	2）贺贺耳机更换
+	2）贺贺耳机更换（带回家）
 	3）邻居家的百万富翁（晚上）
 	4）区块链金融、南风窗材质购买
-	5）HONDA CoNNECT 系统了解
-	6）周计划制定  --已完成
+	5）联系下刘
+	6）
 
 	
 后延：
@@ -63,13 +65,31 @@ Weblink sdk 与车机的整合思路：
 	
 usbService 主要时序
 	1 U盘插入后的主要时序
+		connectManager 通知上来
+		创建devicePlayer
+		创建数据库
+		将U盘中的曲目信息存放在数据库中
 	2 点击usbSource button 后的主要时序
+		两种情况
+			1）U盘信息存在数据库中，直接调用autoPlay 方法，继续上次的播放\
+				恢复上次的播放，需要从MediaBackUp中获取上次存储的播放信息
+			2）新的U盘插入，直接从第一曲开始播放
 	3 点击plan,stop,paush 按钮后的时序
+		UI 侧直接传来 play /stop/paush 的命令，通过UsbService 直接传递给 底层的MediaPlayer
 	4 点击next、previous button 后的时序
+		usbService中devicePlayer 调用 MediaPlayList 中的next 方法，根据当前不同的播放状态，选择不同的list ，选择上下一曲开始播放
+		previos 点击一下只是从头开始播放当前曲目 
 	5 长按next、previous button 后的时序
+		快进快退，调用seetTo 方法，直接定位到 上层传来的positon位置
+		根据传递过来secTime的值，做不同的逻辑处理，给定的值=-1 ，直接从头开始播放该曲目（点击一下previous）
+		secTime>totalTime 自动播放下一曲
+		其他情况调用MediaPlayer中的 seekTo 方法，直接从指定位置播放
+	
 	6 顺序播放切换为随机播放后的时序
 	7 循环模式切换时序
 	8 Language Change 时序
+		语言变更时，setting service 通知给USB Service
+		usbService 向底层TabLib 库重新获取tag信息，将新的tag 信息反馈给上层
 	9 Auto Next 时序
 	10 拖动进度条 SeekTo 时序 
 	11 Vedio,audio 模式切换时序
@@ -77,8 +97,6 @@ usbService 主要时序
 	13 拔出U盘时序
 	
 ---taglib多媒体解析库。。。
-
-C/C++语言种volatile关键字的作用。
 -------------------------------------------------------------------------------------------------------------------------
 
 
