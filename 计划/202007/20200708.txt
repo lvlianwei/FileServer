@@ -9,12 +9,12 @@
 			调整车灯属性，group  --已完成
 			补标人脸   --已完成
 			调整车框大小  --已完成
-			补标车线
-	2 usbService 的artwork实现逻辑 
+			补标车线 ---晚上+明天
+	2 usbService 的 artwork 实现逻辑  --已完成
 	3 weblinkService 模块整体结构 
 	4 C++ 面试题 15个（昨日的顺延到今天）
-	5 周四buf  
-	6 
+	5 周四buf   --已完成
+	6 mediaProvider 进程 改为线程 加入到 usbservice 进程的思路
 	7 简历内容准备（文档）
 	8 面试中可能问到的问题准备（文档）
 日常：
@@ -91,7 +91,6 @@ usbService 主要时序
 		根据传递过来secTime的值，做不同的逻辑处理，给定的值=-1 ，直接从头开始播放该曲目（点击一下previous）
 		secTime>totalTime 自动播放下一曲
 		其他情况调用MediaPlayer中的 seekTo 方法，直接从指定位置播放
-	
 	6 顺序播放切换为随机播放后的时序
 	7 循环模式切换时序
 	8 Language Change 时序
@@ -104,9 +103,27 @@ usbService 主要时序
 	12 点击vedio 、audio list button 时序
 	13 拔出U盘时序
 	
----taglib多媒体解析库。。。
--------------------------------------------------------------------------------------------------------------------------
+taglib多媒体解析库
+	对媒体文件进行解析，获取多媒体文件的作者，流派，大小等信息。。
 
+Usb ArtWork 实现逻辑
+	1）artWork 获取
+		在MediaPlayList中next,previos，selectByID 操作曲目时，会将变更后的曲目反馈给DevicePlayer,DevicePlayer 中 从底层tagLib中获取 包含artWork的媒体信息
+	2）artWork decode
+		将从tagLib中获取到的artWork数据传入 imageDecoder线程，在该线程中对 image 数据解码，并通知给上层解码成功。
+	3) artWork 存储
+		在解码完成后，将解码后的图片数据存放在共享内容中。将解码成功后将解码后的图片信息发送给DevicePlayer / UsbService
+		
+mediaProvider 进程 改为线程 加入到 usbservice 进程的思路
+	
+
+-------------------------------------------------------------------------------------------------------------------------
+1 项目经历
+	
+2 个人经历
+3 自我评价
+4 教育经历
+5 
 
 
 
