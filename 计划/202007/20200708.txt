@@ -81,7 +81,7 @@ usbService 主要时序
 		将U盘中的曲目信息存放在数据库中
 	2 点击usbSource button 后的主要时序
 		两种情况
-			1）U盘信息存在数据库中，直接调用autoPlay 方法，继续上次的播放\
+			1）U盘信息存在数据库中，直接调用autoPlay 方法，继续上次的播放
 				恢复上次的播放，需要从MediaBackUp中获取上次存储的播放信息
 			2）新的U盘插入，直接从第一曲开始播放
 	3 点击plan,stop,paush 按钮后的时序
